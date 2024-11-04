@@ -69,8 +69,8 @@ body {
 }
 
 .prfl-container {
-  margin-top: 70px; /* Ajuste para evitar sobreposição */
-  width: 500px; /* Aumenta a largura do container */
+  margin-top: 70px;
+  width: 500px;
   background-color: rgb(15, 23, 42);
   border-radius: 12px;
   padding: 20px;
@@ -86,7 +86,7 @@ body {
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  align-items: flex-start; /* Alinha os itens à esquerda */
+  align-items: flex-start;
 }
 
 .prfl-pic {
@@ -104,12 +104,12 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px; /* Para manter a borda arredondada */
+  border-radius: 10px;
 }
 
 .prfl-info {
-  text-align: left; /* Alinha o texto à esquerda */
-  margin-left: 10px; /* Adiciona margem à esquerda para mover o texto mais para a esquerda */
+  text-align: left;
+  margin-left: 10px;
 }
 
 .prfl-info h2 {
@@ -125,9 +125,9 @@ body {
 
 .prfl-btn {
   display: flex;
-  flex-wrap: wrap; /* Permite que os botões se movam para a próxima linha, se necessário */
+  flex-wrap: wrap;
   gap: 10px;
-  justify-content: center; /* Centraliza os botões */
+  justify-content: center;
 }
 
 .prfl-btn .btn {
@@ -138,16 +138,16 @@ body {
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.12s, opacity 0.12s;
-  flex: 1 1 150px; /* Ajusta a flexibilidade dos botões, garantindo um tamanho mínimo */
-  text-decoration: none; /* Remove o sublinhado */
-  font-family: Arial, sans-serif; /* Garante que a fonte seja a mesma */
-  text-align: center; /* Centraliza o texto dentro do botão */
+  flex: 1 1 150px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
 
 .prfl-info h2,
 .prfl-info p {
-  font-family: Arial, sans-serif; /* Garante que a fonte seja a mesma */
-  text-align: left; /* Alinha o texto à esquerda */
+  font-family: Arial, sans-serif;
+  text-align: left;
 }
 
 .btn:hover {
@@ -186,11 +186,34 @@ body {
   color: #ffffff;
 }
 
-/* perfil.css ou outro arquivo CSS */
 .profile-img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.messages {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }

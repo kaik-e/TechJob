@@ -28,9 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_URL = 'login'  # Isso deve corresponder ao nome da sua URL de login
+LOGIN_URL = 'login'  
 
-# Application definition
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 INSTALLED_APPS = [
@@ -44,16 +43,11 @@ INSTALLED_APPS = [
     'tailwind',
     'accounts',
     
-    'django.contrib.sites',  # se você estiver usando sites
-
-    'allauth',
-    'allauth.account',
-
-
+    'django.contrib.sites',  
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'  # Esta linha é suficiente
+MEDIA_ROOT = BASE_DIR / 'media'  
 
 SITE_ID = 1
 
@@ -65,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware'
 ]
 
 
@@ -139,7 +132,6 @@ USE_TZ = True
 
 import os
 
-# Adicione estas linhas se não estiverem presentes
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
