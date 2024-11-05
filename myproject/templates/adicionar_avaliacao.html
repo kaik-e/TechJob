@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'adicionar_avaliacao.css' %}"> 
+    <title>Adicionar Avaliação</title>
+</head>
+<body>
+    <div class="evaluation-container">
+        <h2>Adicionar Avaliação</h2>
+        <div class="messages" id="message-container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        
+        <form class="evaluation-form" method="post">
+            {% csrf_token %}
+            <textarea name="comment" placeholder="Escreva seu comentário..." required></textarea>
+            <input type="hidden" name="recipient_id" value="{{ recipient.id }}">  <!-- Use recipient.id -->
+            <button type="submit" class="evaluation-btn">Enviar Avaliação</button>
+        </form>
+        
+        <a href="{% url 'perfil' %}" class="back-btn">Voltar ao Perfil</a>
+    </div>
+</body>
+</html>

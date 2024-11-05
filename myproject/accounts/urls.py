@@ -1,37 +1,42 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
+from django.conf.urls.static import static
+
 
 from .views import (
-    register,
+    adicionar_avaliacao,
+    registrar,
     projeto_detalhes,
     login_view,
     home,
-    projetos,
+    listar_projetos,
     perfil,
-    edit_profile,
+    editar_perfil,
     portfolio,
-    add_portfolio,
-    edit_skills,
-    send_message,
+    adicionar_portfolio,
+    editar_skills,
+    enviar_mensagem,
     adicionar_projeto
 )
 
 urlpatterns = [
     path('', login_view, name='login'),
     path('login/', login_view, name='login'),
-    path('register/', register, name='register'),
+    path('registrar/', registrar, name='registrar'),
     path('home/', home, name='home'),
-    path('projetos/', projetos, name='projetos'),
+    path('projetos/', listar_projetos, name='listar_projetos'),
     path('perfil/', perfil, name='perfil'),
-    path('edit_profile/', edit_profile, name='edit_profile'),
+    path('editar-perfil/', editar_perfil, name='editar_perfil'),
     path('portfolio/', portfolio, name='portfolio'),
-    path('add_portfolio/', add_portfolio, name='add_portfolio'),
-    path('edit_skills/', edit_skills, name='edit_skills'),
-    path('send_message/', send_message, name='send_message'),
-    path('adicionar_projeto/', adicionar_projeto, name='adicionar_projeto'),
+    path('adicionar-portfolio/', adicionar_portfolio, name='adicionar_portfolio'),
+    path('editar-skills/', editar_skills, name='editar_skills'),
+    path('enviar-mensagem/', enviar_mensagem, name='enviar_mensagem'),
+    path('adicionar-projeto/', adicionar_projeto, name='adicionar_projeto'),
     path('projeto/<int:id>/', projeto_detalhes, name='projeto_detalhes'),
-]
+    path('adicionar-avaliacao/', adicionar_avaliacao, name='adicionar_avaliacao'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -29,10 +29,11 @@
                 <h2>{{ user.username }}</h2>
                 <p>{{ user.description }}</p>
                 <div class="prfl-btn">
-                    <a href="{% url 'edit_profile' %}" class="btn">Editar Perfil</a>
-                    <a href="{% url 'edit_skills' %}" class="btn">Editar Skills</a>
-                    <a href="{% url 'portfolio' %}" class="btn">Portfólio</a>
-                    <a href="{% url 'send_message' %}?recipient_id={{ user.id }}" class="btn">Mensagem</a>
+                    <a href="{% url 'editar_perfil' %}" class="btn">Editar Perfil</a>
+                    <a href="{% url 'editar_skills' %}" class="btn">Editar Skills</a>
+                    <a href="{% url 'adicionar_portfolio' %}" class="btn">Portfólio</a>
+                    <a href="{% url 'enviar_mensagem' %}?recipient_id={{ user.id }}" class="btn">Mensagem</a>
+                    <a href="{% url 'adicionar_avaliacao' %}?recipient_id={{ usuario.id }}" class="btn">Adicionar Avaliação</a>
                 </div>
             </div>
         </div>
@@ -42,23 +43,39 @@
             <div class="skills-list">
                 {% for skill in user.skills.all %}
                     <div class="skill-item">{{ skill.name }}</div>
+                {% empty %}
+                    <p>Nenhuma skill cadastrada.</p>
                 {% endfor %}
             </div>
         </div>
-    </div>    
-</body>
-<script>
-    function showMessage() {
-        const messages = document.querySelectorAll('.messages .alert'); 
-        messages.forEach(message => {
-            message.style.display = 'block'; 
-            setTimeout(() => {
-                message.style.display = 'none'; 
-            }, 3000);
-        });
-    }
-  
-    window.onload = showMessage; 
-</script>
 
+        <div class="prfl-evaluations">
+            <h3>Avaliações</h3>
+            <div class="evaluations-list">
+                {% for avaliacao in avaliacoes %}
+                    <div class="evaluation-item">
+                        <strong>{{ avaliacao.author.username }}:</strong>
+                        <p>{{ avaliacao.comment }}</p>
+                    </div>
+                {% empty %}
+                    <p>Nenhuma avaliação ainda.</p>
+                {% endfor %}
+            </div>
+        </div>              
+    </div>
+
+    <script>
+        function showMessage() {
+            const messages = document.querySelectorAll('.messages .alert'); 
+            messages.forEach(message => {
+                message.style.display = 'block'; 
+                setTimeout(() => {
+                    message.style.display = 'none'; 
+                }, 3000);
+            });
+        }
+      
+        window.onload = showMessage; 
+    </script>
+</body>
 </html>
