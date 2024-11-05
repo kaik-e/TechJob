@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'edit_profile.css' %}"> 
+    <link rel="stylesheet" href="{% static 'editar_perfil.css' %}">
     <title>Editar Perfil</title>
 </head>
 <body>
     {% include 'navbar.html' %}
+    
     <div class="edit-profile-container">
         <h1>Editar Perfil</h1>
+        
         <form method="POST" enctype="multipart/form-data" class="edit-profile-form">  
             {% csrf_token %}
             <label for="username">Nome de Usuário:</label>
@@ -24,7 +26,14 @@
 
             <button type="submit" class="edit-profile-btn">Salvar Alterações</button>
         </form>
-        <a href="{% url 'perfil' %}" class="btn">Voltar ao Perfil</a>
+        
+        <div class="action-buttons">
+            <a href="{% url 'editar_skills' %}" class="btn">Editar Skills</a>
+            <a href="{% url 'adicionar_portfolio' %}" class="btn">Adicionar Portfólio</a>
+        </div>
+        
+
+        <a href="{% url 'perfil' user.id %}" class="back-btn btn">Voltar ao Perfil</a>
     </div>
 </body>
 </html>

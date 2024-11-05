@@ -6,7 +6,7 @@ describe('Teste de Adição de Projeto', () => {
   const cpf = '12345678901';
 
   beforeEach(() => {
-    cy.visit('/register/');
+    cy.visit('/registrar/');
     cy.get('select[name="user_type"]').select('freelancer');
     cy.get('input[name="username"]').type(username);
     cy.get('input[name="password"]').type(password);

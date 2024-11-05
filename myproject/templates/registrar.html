@@ -10,12 +10,12 @@
 <body>
     <div class="register-container">
         <h2>Registrar</h2>
-        <form class="register-form" method="POST" action="{% url 'register' %}">
+        <form class="register-form" method="POST" action="{% url 'registrar' %}">
             {% csrf_token %}
             <label for="user_type">Sou um:</label>
             <select name="user_type" id="user_type" onchange="toggleFields()">
                 <option value="freelancer">Freelancer</option>
-                <option value="company">Empresa</option>
+                <option value="company">Empresa</option> 
             </select>
             <label for="username">Usuário:</label>
             <input type="text" name="username" id="username" placeholder="Digite seu usuário" required>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'send_message.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'enviar_mensagem.css' %}">
     <title>Enviar Mensagem</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
             <button type="submit" class="message-btn">Enviar</button>
         </form>
         <button class="back-btn">
-            <a href="{% url 'perfil' %}" style="color: #ffffff; text-decoration: none;">Voltar ao Perfil</a>
+            <a href="{% url 'perfil' recipient.id %}" style="color: #ffffff; text-decoration: none;">Voltar ao Perfil</a>
         </button>
     </div>
 </body>

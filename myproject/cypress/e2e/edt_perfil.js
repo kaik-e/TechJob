@@ -8,7 +8,7 @@ describe('Teste de Editar o Perfil', () => {
     const newDescription = 'Descrição editada com sucesso';
 
     beforeEach(() => {
-        cy.visit('/register/');
+        cy.visit('/registrar/');
         cy.get('select[name="user_type"]').select('freelancer');
         cy.get('input[name="username"]').type(username);
         cy.get('input[name="password"]').type(password);

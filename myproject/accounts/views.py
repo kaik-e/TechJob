@@ -3,7 +3,27 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.db import IntegrityError
 from .models import CustomUser, Avaliacao, Skill, Projeto, Portfolio, Mensagem
+from django.http import JsonResponse
 import re
+from django.views import View
+
+
+def buscar_perfil_ajax(request):
+    query = request.GET.get('q', '')
+    resultados = CustomUser.objects.filter(username__icontains=query)[:5]
+    usuarios = [
+        {
+            'id': usuario.id,
+            'username': usuario.username,
+            'perfil_url': f'/perfil/{usuario.id}/'
+        } for usuario in resultados
+    ]
+    return JsonResponse(usuarios, safe=False)
+
+class PerfilView(View):
+    def get(self, request, id):
+        user = get_object_or_404(CustomUser, id=id)
+        return render(request, 'perfil.html', {'user': user})
 
 def listar_projetos(request):
     projetos = Projeto.objects.all()
@@ -17,34 +37,34 @@ def eh_cnpj_valido(cnpj):
 
 def registrar(request):
     if request.method == 'POST':
-        tipo_usuario = request.POST.get('tipo_usuario')
+        tipo_usuario = request.POST.get('user_type')
         nome_usuario = request.POST.get('username')
         senha = request.POST.get('password')
         email = request.POST.get('email')
 
         if not nome_usuario or not senha or not email or not tipo_usuario:
             messages.error(request, 'Todos os campos são obrigatórios.')
-            return render(request, 'register.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
+            return render(request, 'registrar.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
 
         if CustomUser.objects.filter(username=nome_usuario).exists():
             messages.error(request, 'Nome de usuário já existe.')
-            return render(request, 'register.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
+            return render(request, 'registrar.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
 
         try:
             if tipo_usuario == 'freelancer':
                 cpf = request.POST.get('cpf')
                 if not cpf or not eh_cpf_valido(cpf):
                     messages.error(request, 'CPF é obrigatório e deve conter 11 dígitos.')
-                    return render(request, 'register.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
+                    return render(request, 'registrar.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
 
                 usuario = CustomUser.objects.create_user(username=nome_usuario, password=senha, email=email, is_freelancer=True, cpf=cpf)
 
-            elif tipo_usuario == 'empresa':
-                nome_empresa = request.POST.get('nome_empresa')
+            elif tipo_usuario == 'company':
+                nome_empresa = request.POST.get('company_name')
                 cnpj = request.POST.get('cnpj')
                 if not nome_empresa or not cnpj or not eh_cnpj_valido(cnpj):
                     messages.error(request, 'Nome da empresa e CNPJ são obrigatórios e o CNPJ deve conter 14 dígitos.')
-                    return render(request, 'register.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
+                    return render(request, 'registrar.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
 
                 usuario = CustomUser.objects.create_user(username=nome_usuario, password=senha, email=email, is_company=True, company_name=nome_empresa, cnpj=cnpj)
 
@@ -56,9 +76,9 @@ def registrar(request):
 
         except IntegrityError:
             messages.error(request, 'Ocorreu um erro com seu registro. Tente novamente.')
-            return render(request, 'register.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
+            return render(request, 'registrar.html', {'tipo_usuario': tipo_usuario, 'username': nome_usuario, 'email': email})
 
-    return render(request, 'register.html')
+    return render(request, 'registrar.html')
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -81,49 +101,68 @@ def home(request):
     projetos = Projeto.objects.all()
     return render(request, 'home.html', {'projetos': projetos})
 
-def perfil(request):
-    usuario = request.user
-    return render(request, 'perfil.html', {'usuario': usuario, 'avaliacoes': usuario.avaliacoes.all()})
+def perfil(request, user_id):
+    user = get_object_or_404(CustomUser, id=user_id)
+    avaliacoes = user.avaliacoes.all()
+    return render(request, 'perfil.html', {'user': user, 'avaliacoes': avaliacoes})
 
 def editar_perfil(request):
-    if request.method == 'POST':
-        novo_nome_usuario = request.POST.get('username')
-        nova_descricao = request.POST.get('description')
-        nova_foto_perfil = request.FILES.get('profile_picture')
+    usuario = request.user
 
-        if CustomUser.objects.filter(username=novo_nome_usuario).exclude(id=request.user.id).exists():
-            messages.error(request, 'Este nome de usuário já está em uso.')
+    if request.method == 'POST':
+        usuario.username = request.POST.get('username')
+        usuario.description = request.POST.get('description')
+        profile_picture = request.FILES.get('profile_picture')
+        if profile_picture:
+            usuario.profile_picture = profile_picture
+        usuario.save()
+        messages.success(request, 'Perfil atualizado com sucesso!')
+        return redirect('perfil', usuario.id)
+
+    if 'skill_name' in request.POST:
+        skill_name = request.POST.get('skill_name')
+        if skill_name:
+            Skill.objects.create(name=skill_name, user=usuario)
+            messages.success(request, 'Skill adicionada com sucesso!')
             return redirect('editar_perfil')
 
-        usuario = request.user
-        usuario.username = novo_nome_usuario
-        usuario.description = nova_descricao
-        if nova_foto_perfil:
-            usuario.profile_picture = nova_foto_perfil
-        usuario.save()
+    if 'portfolio_name' in request.POST:
+        portfolio_name = request.POST.get('portfolio_name')
+        if portfolio_name:
+            Portfolio.objects.create(name=portfolio_name, user=usuario)
+            messages.success(request, 'Projeto adicionado ao portfólio com sucesso!')
+            return redirect('editar_perfil')
 
-        messages.success(request, 'Perfil atualizado com sucesso!')
-        return redirect('perfil')
-
-    return render(request, 'editar_perfil.html', {'usuario': request.user})
+    skills_usuario = usuario.skills.all()  
+    portfolio_usuario = Portfolio.objects.filter(user=usuario)  
+    return render(request, 'editar_perfil.html', {
+        'user': usuario,
+        'skills_usuario': skills_usuario,
+        'portfolio_usuario': portfolio_usuario,
+    })
 
 def portfolio(request):
     portfolios_usuario = Portfolio.objects.filter(user=request.user)
     return render(request, 'portfolio.html', {'portfolios': portfolios_usuario})
 
+
 def adicionar_portfolio(request):
+    usuario = request.user
+
     if request.method == 'POST':
-        titulo = request.POST.get('titulo')
-        descricao = request.POST.get('descricao')
+        titulo = request.POST.get('title')
+        descricao = request.POST.get('description')
 
         if titulo and descricao:
-            Portfolio.objects.create(user=request.user, title=titulo, description=descricao)
+            Portfolio.objects.create(user=usuario, title=titulo, description=descricao)
             messages.success(request, 'Portfólio adicionado com sucesso!')
-            return redirect('portfolio')
+            return redirect('adicionar_portfolio')  
 
-        messages.error(request, 'Por favor, preencha todos os campos.')
+        messages.error(request, 'Por favor, preencha todos os campos.')  
 
-    return render(request, 'adicionar_portfolio.html')
+    portfolios_usuario = usuario.portfolios.all()
+    return render(request, 'adicionar_portfolio.html', {'portfolios': portfolios_usuario})
+
 
 def editar_skills(request):
     usuario = request.user
@@ -160,7 +199,7 @@ def enviar_mensagem(request):
 def adicionar_projeto(request):
     if not request.user.is_authenticated:
         messages.error(request, 'Você precisa estar logado para adicionar um projeto.')
-        return redirect('login')  
+        return redirect('login')
 
     if request.method == 'POST':
         titulo = request.POST.get('titulo')
@@ -168,7 +207,7 @@ def adicionar_projeto(request):
 
         if not titulo or not descricao:
             messages.error(request, 'Por favor, preencha todos os campos.')
-            return render(request, 'adicionar_projeto.html')  
+            return render(request, 'adicionar_projeto.html')
 
         novo_projeto = Projeto(titulo=titulo, descricao=descricao, usuario=request.user)
         novo_projeto.save()
@@ -181,22 +220,25 @@ def projeto_detalhes(request, id):
     projeto = get_object_or_404(Projeto, id=id)
     return render(request, 'projetos/projeto_detalhes.html', {'projeto': projeto})
 
-def adicionar_avaliacao(request):
-    if request.method == 'POST':
-        recipient_id = request.POST.get('recipient_id')
-        comentario = request.POST.get('comment')
-
-        if recipient_id and comentario:  
-            recipient = get_object_or_404(CustomUser, id=recipient_id)
-            try:
-                Avaliacao.objects.create(recipient=recipient, author=request.user, comment=comentario)
-                messages.success(request, 'Avaliação adicionada com sucesso!')
-                return redirect('perfil')  
-            except Exception as e:
-                messages.error(request, f'Ocorreu um erro ao adicionar a avaliação: {str(e)}')
-        else:
-            messages.error(request, 'Por favor, preencha todos os campos corretamente.')
-
-    recipient_id = request.GET.get('recipient_id')
+def adicionar_avaliacao(request, recipient_id):
     recipient = get_object_or_404(CustomUser, id=recipient_id)
-    return render(request, 'adicionar_avaliacao.html', {'recipient': recipient})
+
+    if request.method == 'POST':
+        comentario = request.POST.get('comment')
+        if comentario:
+            avaliacao = Avaliacao(
+                recipient=recipient,
+                author=request.user,
+                comment=comentario
+            )
+            try:
+                avaliacao.save()
+                messages.success(request, 'Avaliação enviada com sucesso!')
+                return redirect('perfil', user_id=recipient_id)
+            except Exception as e:
+                print(e)
+                messages.error(request, 'Ocorreu um erro ao enviar a avaliação.')
+
+    avaliacoes_usuario = Avaliacao.objects.filter(recipient=recipient)
+
+    return render(request, 'adicionar_avaliacao.html', {'recipient': recipient, 'avaliacoes_usuario': avaliacoes_usuario})

@@ -10,21 +10,47 @@
 <body>
     <nav class="navbar">
         <div class="nav-links">
-            <a href="{% url 'home' %}" class="nav-link">Home</a>
+            <a href="{% url 'home' %}" class="nav-link">home</a>
         </div>
         <div class="search-container">
-            <input type="text" placeholder="Pesquisar..." class="search-input" />
-            <button class="search-button">🔍</button>
-        </div>
+            <input type="text" id="search-input" placeholder="Buscar usuários..." />
+            <ul id="search-results"></ul>
+        </div>        
         <div class="profile-icon">
-            <a href="{% url 'perfil' %}">
+            <a href="{% url 'perfil' user.id %}">
                 {% if user.profile_picture %}
                     <img src="{{ user.profile_picture.url }}" alt="Foto de perfil" class="profile-pic" />
                 {% else %}
                     <img src="{% static 'default_profile.png' %}" alt="Foto de perfil padrão" class="profile-pic" />
                 {% endif %}
             </a>
-        </div>
+        </div>        
     </nav>
+
+    <script>
+        document.getElementById('search-input').addEventListener('input', function() {
+            let query = this.value;
+        
+            if (query.length > 0) {
+                fetch(`/buscar-perfil-ajax/?q=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let resultsContainer = document.getElementById('search-results');
+                        resultsContainer.innerHTML = ''; 
+        
+                        data.forEach(usuario => {
+                            let li = document.createElement('li');
+                            li.textContent = usuario.username;
+                            li.onclick = function() {
+                                window.location.href = usuario.perfil_url;
+                            };
+                            resultsContainer.appendChild(li);
+                        });
+                    });
+            } else {
+                document.getElementById('search-results').innerHTML = ''; 
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.views import View
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import get_user_model
+
 
 class CustomUser(AbstractUser):
     is_freelancer = models.BooleanField(default=False)
@@ -21,21 +25,28 @@ class Projeto(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
 
+
 class Portfolio(models.Model):
     user = models.ForeignKey(CustomUser, related_name='portfolios', on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    data_criacao = models.DateTimeField(auto_now_add=True)
-    data_atualizacao = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.title
+
 
 class Avaliacao(models.Model):
-    recipient = models.ForeignKey(CustomUser, related_name='avaliacoes', on_delete=models.CASCADE)
-    author = models.ForeignKey(CustomUser, related_name='avaliacoes_autor', on_delete=models.CASCADE)
+    recipient = models.ForeignKey(CustomUser, related_name='avaliacoes_recebidas', on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, related_name='avaliacoes_enviadas', on_delete=models.CASCADE)
     comment = models.TextField()
-    data_criacao = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Avaliação de {self.author.username} para {self.recipient.username}"
 
 class Mensagem(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='mensagens_enviadas', on_delete=models.CASCADE)
     recipient = models.ForeignKey(CustomUser, related_name='mensagens_recebidas', on_delete=models.CASCADE)
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+

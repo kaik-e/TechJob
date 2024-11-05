@@ -9,9 +9,10 @@
 </head>
 <body>
     {% include 'navbar.html' %}
+    
     <div class="portfolio-content">
         <h1>Meu Portfólio</h1>
-        <a href="{% url 'add_portfolio' %}" class="btn">Adicionar Portfólio</a>
+        <a href="{% url 'adicionar_portfolio' %}" class="btn">Adicionar Portfólio</a>
         <div class="portfolio-container">
             {% if portfolios %}
                 <ul>
@@ -25,7 +26,7 @@
             {% else %}
                 <p class="no-portfolios">Você ainda não adicionou nenhum portfólio.</p>
             {% endif %}
-        </div>
+        </div>        
     </div>
 </body>
 </html>

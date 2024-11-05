@@ -1,4 +1,3 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -21,7 +20,7 @@
             
             <button type="submit" class="lgn-btn">Entrar</button>
         </form>
-        <p>Não tem uma conta? <a href="{% url 'register' %}">Registrar</a></p> 
+        <p>Não tem uma conta? <a href="{% url 'registrar' %}">Registrar</a></p> 
         {% if messages %}
             <ul>
                 {% for message in messages %}

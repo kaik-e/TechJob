@@ -30,10 +30,9 @@
                 <p>{{ user.description }}</p>
                 <div class="prfl-btn">
                     <a href="{% url 'editar_perfil' %}" class="btn">Editar Perfil</a>
-                    <a href="{% url 'editar_skills' %}" class="btn">Editar Skills</a>
-                    <a href="{% url 'adicionar_portfolio' %}" class="btn">Portfólio</a>
+                    <a href="{% url 'portfolio' %}" class="btn">Portfólio</a>
                     <a href="{% url 'enviar_mensagem' %}?recipient_id={{ user.id }}" class="btn">Mensagem</a>
-                    <a href="{% url 'adicionar_avaliacao' %}?recipient_id={{ usuario.id }}" class="btn">Adicionar Avaliação</a>
+                    <a href="{% url 'adicionar_avaliacao' user.id %}" class="btn">Adicionar Avaliação</a>
                 </div>
             </div>
         </div>
@@ -61,7 +60,8 @@
                     <p>Nenhuma avaliação ainda.</p>
                 {% endfor %}
             </div>
-        </div>              
+        </div>
+        
     </div>
 
     <script>

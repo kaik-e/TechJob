@@ -62,6 +62,7 @@ h1 {
 .created-at {
     font-size: 12px;
     color: #bbb;
+    margin-top: 5px; 
 }
 
 .no-portfolios {

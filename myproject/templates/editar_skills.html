@@ -11,15 +11,15 @@
     {% include 'navbar.html' %}
     <div class="edit-skills-container">
         <h2>Editar Skills</h2>
-        <form method="post" class="edit-skills-form">
+        <form method="POST">
             {% csrf_token %}
-            <input type="text" name="skill_name" placeholder="Adicionar nova skill" required>
-            <button type="submit" class="edit-skills-btn">Adicionar</button>
-        </form>
+            <input type="text" name="skill_name" placeholder="Adicione uma nova skill">
+            <button type="submit">Adicionar Skill</button>
+        </form>        
 
         <h3>Suas Skills</h3>
         <ul>
-            {% for skill in user_skills %}
+            {% for skill in habilidades_usuario %}  {# Usando a variável correta aqui #}
                 <li>{{ skill.name }}</li>
             {% empty %}
                 <li>Você ainda não possui skills.</li>
@@ -27,8 +27,8 @@
         </ul>
 
         <button class="back-btn">
-            <a href="{% url 'perfil' %}" style="color: #ffffff; text-decoration: none;">Voltar para o Perfil</a>
-        </button>
+            <a href="{% url 'editar_perfil' %}" style="color: #ffffff; text-decoration: none;">Voltar para o Editar Perfil</a>
+        </button>        
     </div>
 </body>
 </html>
