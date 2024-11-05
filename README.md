@@ -66,6 +66,9 @@ py manage.py runserver
 
 ![Sprint](img/sprint.png)
 
+##Entrega 4
+
+Sprint 1(Sprint 2 Total)
 
 ## Desenvolvido por:
 
