@@ -1,10 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from django.conf.urls.static import static
 from . import views
-
-
 
 from .views import (
     adicionar_avaliacao,
@@ -39,9 +36,8 @@ urlpatterns = [
     path('adicionar-projeto/', adicionar_projeto, name='adicionar_projeto'),
     path('projeto/<int:id>/', projeto_detalhes, name='projeto_detalhes'),
     path('adicionar-avaliacao/<int:recipient_id>/', adicionar_avaliacao, name='adicionar_avaliacao'),
-    path('buscar-perfil-ajax/', buscar_perfil_ajax, name='buscar_perfil_ajax'),
+    path('buscar/', views.buscar_perfil_ajax, name='buscar_perfil_ajax'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

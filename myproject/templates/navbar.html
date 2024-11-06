@@ -10,12 +10,12 @@
 <body>
     <nav class="navbar">
         <div class="nav-links">
-            <a href="{% url 'home' %}" class="nav-link">home</a>
+            <a href="{% url 'home' %}" class="nav-link">Home</a>
         </div>
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Buscar usuários..." />
+            <input type="text" id="search-input" placeholder="Buscar usuários ou projetos..." />
             <ul id="search-results"></ul>
-        </div>        
+        </div>
         <div class="profile-icon">
             <a href="{% url 'perfil' user.id %}">
                 {% if user.profile_picture %}
@@ -24,31 +24,46 @@
                     <img src="{% static 'default_profile.png' %}" alt="Foto de perfil padrão" class="profile-pic" />
                 {% endif %}
             </a>
-        </div>        
+        </div>
     </nav>
-
     <script>
         document.getElementById('search-input').addEventListener('input', function() {
             let query = this.value;
-        
             if (query.length > 0) {
-                fetch(`/buscar-perfil-ajax/?q=${query}`)
+                fetch(`/buscar/?q=${query}`)
                     .then(response => response.json())
                     .then(data => {
                         let resultsContainer = document.getElementById('search-results');
-                        resultsContainer.innerHTML = ''; 
-        
-                        data.forEach(usuario => {
-                            let li = document.createElement('li');
-                            li.textContent = usuario.username;
-                            li.onclick = function() {
-                                window.location.href = usuario.perfil_url;
-                            };
-                            resultsContainer.appendChild(li);
-                        });
+                        resultsContainer.innerHTML = '';  
+                        if (data.usuarios.length > 0 || data.projetos.length > 0) {
+                            data.usuarios.forEach(usuario => {
+                                let li = document.createElement('li');
+                                li.textContent = usuario.username;
+                                li.onclick = function() {
+                                    window.location.href = usuario.perfil_url;
+                                };
+                                resultsContainer.appendChild(li);
+                            });
+                            data.projetos.forEach(projeto => {
+                                let li = document.createElement('li');
+                                li.textContent = projeto.titulo;
+                                li.onclick = function() {
+                                    window.location.href = projeto.projeto_url;
+                                };
+                                resultsContainer.appendChild(li);
+                            });
+                            resultsContainer.style.display = 'block';
+                        } else {
+                            resultsContainer.innerHTML = '<li>Nenhum resultado encontrado</li>';
+                            resultsContainer.style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar:', error);
                     });
             } else {
-                document.getElementById('search-results').innerHTML = ''; 
+                document.getElementById('search-results').innerHTML = '';
+                document.getElementById('search-results').style.display = 'none';
             }
         });
     </script>

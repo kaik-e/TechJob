@@ -47,22 +47,29 @@
                 {% endfor %}
             </div>
         </div>
-
-        <div class="prfl-evaluations">
-            <h3>Avaliações</h3>
-            <div class="evaluations-list">
-                {% for avaliacao in avaliacoes %}
-                    <div class="evaluation-item">
-                        <strong>{{ avaliacao.author.username }}:</strong>
-                        <p>{{ avaliacao.comment }}</p>
-                    </div>
-                {% empty %}
-                    <p>Nenhuma avaliação ainda.</p>
-                {% endfor %}
-            </div>
-        </div>
         
+        <div class="prfl-evaluations">
+            <h3>Suas Avaliações</h3>
+            <ul id="evaluations-list">
+                {% for avaliacao in avaliacoes %}
+                    <li class="evaluation-item{% if forloop.counter > 3 %} hidden{% endif %}">
+                        {{ avaliacao.comment }} - Avaliado: {{ avaliacao.recipient.username }}
+                    </li>
+                {% empty %}
+                    <li>Você ainda não tem avaliações para este perfil.</li>
+                {% endfor %}
+            </ul>
+            {% if avaliacoes.count > 3 %}
+                <button id="toggle-btn" class="btn">Ver mais</button>
+            {% endif %}
+        </div>
     </div>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 
     <script>
         function showMessage() {
@@ -76,6 +83,22 @@
         }
       
         window.onload = showMessage; 
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.getElementById("toggle-btn");
+            const hiddenItems = document.querySelectorAll(".evaluation-item.hidden");
+            let showAll = false;
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener("click", function() {
+                    hiddenItems.forEach(item => {
+                        item.style.display = showAll ? "none" : "list-item";
+                    });
+                    toggleBtn.textContent = showAll ? "Ver mais" : "Ver menos";
+                    showAll = !showAll;
+                });
+            }
+        });
     </script>
 </body>
 </html>

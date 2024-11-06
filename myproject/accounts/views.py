@@ -9,21 +9,38 @@ from django.views import View
 
 
 def buscar_perfil_ajax(request):
-    query = request.GET.get('q', '')
-    resultados = CustomUser.objects.filter(username__icontains=query)[:5]
+    query = request.GET.get('q', '').strip()
+    if not query:
+        return JsonResponse({'usuarios': [], 'projetos': []})
+    
+    usuarios_resultados = CustomUser.objects.filter(username__icontains=query)[:5]
     usuarios = [
         {
             'id': usuario.id,
             'username': usuario.username,
             'perfil_url': f'/perfil/{usuario.id}/'
-        } for usuario in resultados
+        }
+        for usuario in usuarios_resultados
     ]
-    return JsonResponse(usuarios, safe=False)
+    
+    projetos_resultados = Projeto.objects.filter(titulo__icontains=query)[:5]
+    projetos = [
+        {
+            'id': projeto.id,
+            'titulo': projeto.titulo,
+            'projeto_url': f'/projeto/{projeto.id}/'
+        }
+        for projeto in projetos_resultados
+    ]
+    
+    return JsonResponse({'usuarios': usuarios, 'projetos': projetos})
 
 class PerfilView(View):
     def get(self, request, id):
         user = get_object_or_404(CustomUser, id=id)
-        return render(request, 'perfil.html', {'user': user})
+        avaliacoes = user.avaliacoes_recebidas.all()
+        return render(request, 'perfil.html', {'user': user, 'avaliacoes': avaliacoes})
+
 
 def listar_projetos(request):
     projetos = Projeto.objects.all()
@@ -103,7 +120,7 @@ def home(request):
 
 def perfil(request, user_id):
     user = get_object_or_404(CustomUser, id=user_id)
-    avaliacoes = user.avaliacoes.all()
+    avaliacoes = user.avaliacoes.all()  
     return render(request, 'perfil.html', {'user': user, 'avaliacoes': avaliacoes})
 
 def editar_perfil(request):

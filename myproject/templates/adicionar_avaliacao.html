@@ -17,14 +17,19 @@
             <button type="submit">Adicionar Avaliação</button>
         </form>
 
-        <h3>Suas Avaliações para {{ recipient.username }}</h3>
-        <ul>
-            {% for avaliacao in avaliacoes_usuario %}
-                <li>{{ avaliacao.comment }} - Avaliado: {{ avaliacao.recipient.username }}</li>
-            {% empty %}
-                <li>Você ainda não tem avaliações para este perfil.</li>
-            {% endfor %}
-        </ul>
+        <div class="prfl-evaluations">
+            <h3>Suas Avaliações</h3>
+            <ul id="evaluations-list">
+                {% for avaliacao in avaliacoes %}
+                    <li class="evaluation-item{% if forloop.counter > 3 %} hidden{% endif %}">
+                        {{ avaliacao.comment }} - Avaliado: {{ avaliacao.recipient.username }}
+                    </li>
+                {% empty %}
+                    <li>Você ainda não tem avaliações para este perfil.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
 
         <a href="{% url 'perfil' recipient.id %}" class="back-btn">Voltar para o Perfil</a>
     </div>
