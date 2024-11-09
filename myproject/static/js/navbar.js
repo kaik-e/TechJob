@@ -30,7 +30,8 @@ document.getElementById('search-input').addEventListener('input', function() {
                     });
 
                     resultsContainer.style.display = 'block';
-                    resultsContainer.style.maxHeight = '200px'; 
+                    resultsContainer.style.maxHeight = '200px'; // Limita a altura
+                } else {
                     resultsContainer.innerHTML = '<li>Nenhum resultado encontrado</li>';
                     resultsContainer.style.display = 'block';
                 }

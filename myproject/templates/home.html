@@ -20,10 +20,13 @@
                   </svg>
                 </button>
                 <ul id="home-search-results" class="absolute top-10 left-0 w-full bg-gray-800 text-white rounded-md hidden"></ul>
-              </div>
+            </div>
             <div class="relative mx-6">
-                <button id="filter-button" class="bg-gray-900 border h-9 rounded-xl px-4 flex items-center hover:border transition-all relative">
+                <button id="filter-button" class="bg-gray-900 border border-gray-500 h-9 rounded-xl px-4 flex items-center hover:border-green-500 transition-all relative">
                     <span class="text-white">Filter</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 12.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-8.586L3.293 6.707A1 1 0 013 6V4z" />
+                    </svg>
                 </button>
                 <div id="filter-dropdown" class="absolute hidden bg-gray-800 text-white rounded-md mt-1 w-40">
                     <div data-filter="all" class="py-2 px-4 hover:bg-gray-700 cursor-pointer">Todos</div>
@@ -61,7 +64,6 @@
             </div>
             {% endfor %}
         </div>
-
     </div>
 </body>
 <script src="{% static 'js/home.js' %}"></script>
