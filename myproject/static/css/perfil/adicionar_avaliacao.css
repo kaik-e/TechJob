@@ -1,14 +1,15 @@
+/* Estilo gral */
 body {
   background-color: rgb(31, 41, 55);
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 800px;
+  height: 100vh;
   margin: 0;
 }
 
-.evaluation-container {
+.edit-skills-container {
   background-color: rgb(15, 23, 42);
   padding: 40px;
   border-radius: 12px;
@@ -16,20 +17,23 @@ body {
   width: 400px;
   text-align: center;
   color: #f8f8f8;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 
-.evaluation-container h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
+.edit-skills-container h2 {
   color: #f8f8f8;
+  margin-bottom: 20px;
 }
 
-.evaluation-form {
+/* Estilo do formulário */
+.edit-skills-container form {
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 }
 
-.evaluation-form textarea {
+.edit-skills-container form textarea {
   padding: 10px;
   margin-bottom: 20px;
   border: none;
@@ -37,14 +41,11 @@ body {
   background-color: rgb(55, 65, 81);
   color: #f8f8f8;
   font-size: 16px;
-  resize: vertical;
+  outline: none;
+  height: 100px; /* Ajuste da altura da área de texto */
 }
 
-.evaluation-form textarea::placeholder {
-  color: rgba(248, 248, 248, 0.7);
-}
-
-.evaluation-btn {
+.edit-skills-container form button {
   padding: 10px;
   background-color: rgb(66, 180, 75);
   border: none;
@@ -55,27 +56,32 @@ body {
   transition: background-color 0.12s, opacity 0.12s;
 }
 
-.evaluation-btn:hover {
+.edit-skills-container form button:hover {
   background-color: rgb(55, 155, 65);
 }
 
-.evaluation-btn:active {
+.edit-skills-container form button:active {
   opacity: 0.6;
 }
 
+/* Estilo do botão de voltar */
 .back-btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
+  padding: 12px 20px;
+  margin-top: 20px;
   background-color: rgb(66, 180, 75);
-  color: #ffffff;
+  color: white;
   text-decoration: none;
-  border-radius: 7px;
-  transition: background-color 0.12s, opacity 0.12s;
-  border: none;
-  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .back-btn:hover {
   background-color: rgb(55, 155, 65);
+  transform: scale(1.05);
+}
+
+.back-btn:active {
+  opacity: 0.6;
 }

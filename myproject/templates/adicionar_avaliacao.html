@@ -4,34 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'adicionar_avaliacao.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfil/adicionar_avaliacao.css' %}">
     <title>Editar Avaliações</title>
 </head>
 <body>
     {% include 'navbar.html' %}
     <div class="edit-skills-container">
-        <h2>Editar Avaliações</h2>
-        <form method="POST">
+        <h2>Adicionar Avaliação</h2>
+        <div class="messages" id="message-container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+
+        <form id="avaliacao-form" method="POST">
             {% csrf_token %}
             <textarea name="comment" placeholder="Escreva sua avaliação..." required></textarea>
+            <span id="error-message" style="color: red; display: none;">Por favor, digite uma avaliação.</span>
             <button type="submit">Adicionar Avaliação</button>
         </form>
 
-        <div class="prfl-evaluations">
-            <h3>Suas Avaliações</h3>
-            <ul id="evaluations-list">
-                {% for avaliacao in avaliacoes %}
-                    <li class="evaluation-item{% if forloop.counter > 3 %} hidden{% endif %}">
-                        {{ avaliacao.comment }} - Avaliado: {{ avaliacao.recipient.username }}
-                    </li>
-                {% empty %}
-                    <li>Você ainda não tem avaliações para este perfil.</li>
-                {% endfor %}
-            </ul>
-        </div>
-        
-
         <a href="{% url 'perfil' recipient.id %}" class="back-btn">Voltar para o Perfil</a>
     </div>
+    <script src="{% static 'js/adicionar_avaliacao.js' %}"></script>
 </body>
 </html>

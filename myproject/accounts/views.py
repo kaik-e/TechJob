@@ -6,6 +6,8 @@ from .models import CustomUser, Avaliacao, Skill, Projeto, Portfolio, Mensagem
 from django.http import JsonResponse
 import re
 from django.views import View
+from django.contrib.auth.views import LogoutView
+
 
 
 def buscar_perfil_ajax(request):
@@ -39,7 +41,7 @@ class PerfilView(View):
     def get(self, request, id):
         user = get_object_or_404(CustomUser, id=id)
         avaliacoes = user.avaliacoes_recebidas.all()
-        return render(request, 'perfil.html', {'user': user, 'avaliacoes': avaliacoes})
+        return render(request, 'perfil.html', {'user': user, 'avaliacoes': avaliacoes, 'request_user': request.user})
 
 
 def listar_projetos(request):
@@ -115,13 +117,17 @@ def login_view(request):
     return render(request, 'login.html')
 
 def home(request):
-    projetos = Projeto.objects.all()
+    filtro = request.GET.get('filtro')
+    if filtro and filtro != 'all':
+        projetos = Projeto.objects.filter(filtro=filtro)
+    else:
+        projetos = Projeto.objects.all()
     return render(request, 'home.html', {'projetos': projetos})
 
 def perfil(request, user_id):
     user = get_object_or_404(CustomUser, id=user_id)
     avaliacoes = user.avaliacoes.all()  
-    return render(request, 'perfil.html', {'user': user, 'avaliacoes': avaliacoes})
+    return render(request, 'perfil.html', {'user': user, 'avaliacoes': avaliacoes, 'request_user': request.user})
 
 def editar_perfil(request):
     usuario = request.user
@@ -163,6 +169,10 @@ def portfolio(request):
     return render(request, 'portfolio.html', {'portfolios': portfolios_usuario})
 
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Portfolio
+
 def adicionar_portfolio(request):
     usuario = request.user
 
@@ -170,12 +180,12 @@ def adicionar_portfolio(request):
         titulo = request.POST.get('title')
         descricao = request.POST.get('description')
 
-        if titulo and descricao:
+        if not titulo.strip() or not descricao.strip():
+            messages.error(request, 'Por favor, preencha todos os campos corretamente.')
+        else:
             Portfolio.objects.create(user=usuario, title=titulo, description=descricao)
             messages.success(request, 'Portfólio adicionado com sucesso!')
-            return redirect('adicionar_portfolio')  
-
-        messages.error(request, 'Por favor, preencha todos os campos.')  
+            return redirect('adicionar_portfolio')
 
     portfolios_usuario = usuario.portfolios.all()
     return render(request, 'adicionar_portfolio.html', {'portfolios': portfolios_usuario})
@@ -186,13 +196,22 @@ def editar_skills(request):
 
     if request.method == 'POST':
         nome_skill = request.POST.get('skill_name')
+
         if nome_skill:
             Skill.objects.create(name=nome_skill, user=usuario)
             messages.success(request, 'Skill adicionada com sucesso!')
             return redirect('editar_skills')
+        else:
+            messages.error(request, 'Skill não pode ser vazia!')
 
     habilidades_usuario = usuario.skills.all()
     return render(request, 'editar_skills.html', {'habilidades_usuario': habilidades_usuario})
+
+from django.core.mail import send_mail
+from django.conf import settings
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib import messages
+from .models import CustomUser
 
 def enviar_mensagem(request):
     if request.user.is_authenticated:
@@ -200,19 +219,25 @@ def enviar_mensagem(request):
             recipient_id = request.POST.get('recipient_id')
             recipient = get_object_or_404(CustomUser, id=recipient_id)
             content_message = request.POST.get('message_content')
-
             if content_message:
-                Mensagem.objects.create(sender=request.user, recipient=recipient, content=content_message)
-                messages.success(request, 'Mensagem enviada com sucesso!')
-                return redirect('perfil')
-
+                try:
+                    send_mail(
+                        subject=f"Nova mensagem de {request.user.username}",
+                        message=content_message,
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[recipient.email],
+                    )
+                    messages.success(request, 'Mensagem enviada com sucesso!')
+                except Exception as e:
+                    messages.error(request, f"Erro ao enviar mensagem: {e}")
+                return redirect('perfil', id=recipient_id)  
         recipient_id = request.GET.get('recipient_id')
         recipient = get_object_or_404(CustomUser, id=recipient_id)
         return render(request, 'enviar_mensagem.html', {'recipient': recipient})
     else:
         messages.error(request, 'Você precisa estar logado para enviar mensagens.')
         return redirect('login_view')
-
+    
 def adicionar_projeto(request):
     if not request.user.is_authenticated:
         messages.error(request, 'Você precisa estar logado para adicionar um projeto.')
@@ -221,37 +246,44 @@ def adicionar_projeto(request):
     if request.method == 'POST':
         titulo = request.POST.get('titulo')
         descricao = request.POST.get('descricao')
+        filtro = request.POST.get('filtro')
 
-        if not titulo or not descricao:
-            messages.error(request, 'Por favor, preencha todos os campos.')
+        if not titulo or not descricao or not filtro:
+            messages.error(request, 'Por favor, preencha todos os campos e selecione um filtro.')
             return render(request, 'adicionar_projeto.html')
-
-        novo_projeto = Projeto(titulo=titulo, descricao=descricao, usuario=request.user)
+              
+              
+        novo_projeto = Projeto(titulo=titulo, descricao=descricao, filtro=filtro, usuario=request.user)
         novo_projeto.save()
         messages.success(request, 'Projeto adicionado com sucesso!')
         return redirect('home')
 
     return render(request, 'adicionar_projeto.html')
 
+
 def projeto_detalhes(request, id):
     projeto = get_object_or_404(Projeto, id=id)
     return render(request, 'projetos/projeto_detalhes.html', {'projeto': projeto})
+
+from django.contrib import messages
 
 def adicionar_avaliacao(request, recipient_id):
     recipient = get_object_or_404(CustomUser, id=recipient_id)
 
     if request.method == 'POST':
         comentario = request.POST.get('comment')
-        if comentario:
-            avaliacao = Avaliacao(
-                recipient=recipient,
-                author=request.user,
-                comment=comentario
-            )
+        if not comentario:  # Verifica se o comentário está vazio
+            messages.error(request, 'Por favor, digite uma avaliação.')  # Mensagem de erro
+        else:
             try:
+                avaliacao = Avaliacao(
+                    recipient=recipient,
+                    author=request.user,
+                    comment=comentario
+                )
                 avaliacao.save()
                 messages.success(request, 'Avaliação enviada com sucesso!')
-                return redirect('perfil', user_id=recipient_id)
+                return redirect('adicionar_avaliacao', recipient_id=recipient_id)  # Redireciona para a mesma página após adicionar
             except Exception as e:
                 print(e)
                 messages.error(request, 'Ocorreu um erro ao enviar a avaliação.')

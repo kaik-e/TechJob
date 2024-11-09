@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'perfil.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfil/perfil.css' %}">
     <title>Perfil</title>
 </head>
 <body>
     {% include 'navbar.html' %}
-
     <div class="messages" id="message-container">
         {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">{{ message }}</div>
         {% endfor %}
     </div>    
-
     <div class="prfl-container">
         <div class="prfl-tlt">
             <div class="prfl-pic">
@@ -29,7 +27,9 @@
                 <h2>{{ user.username }}</h2>
                 <p>{{ user.description }}</p>
                 <div class="prfl-btn">
-                    <a href="{% url 'editar_perfil' %}" class="btn">Editar Perfil</a>
+                    {% if request.user == user %}
+                        <a href="{% url 'editar_perfil' %}" class="btn">Editar Perfil</a>
+                    {% endif %}
                     <a href="{% url 'portfolio' %}" class="btn">Portfólio</a>
                     <a href="{% url 'enviar_mensagem' %}?recipient_id={{ user.id }}" class="btn">Mensagem</a>
                     <a href="{% url 'adicionar_avaliacao' user.id %}" class="btn">Adicionar Avaliação</a>
@@ -47,13 +47,13 @@
                 {% endfor %}
             </div>
         </div>
-        
+       
         <div class="prfl-evaluations">
             <h3>Suas Avaliações</h3>
             <ul id="evaluations-list">
                 {% for avaliacao in avaliacoes %}
                     <li class="evaluation-item{% if forloop.counter > 3 %} hidden{% endif %}">
-                        {{ avaliacao.comment }} - Avaliado: {{ avaliacao.recipient.username }}
+                        {{ avaliacao.comment }}
                     </li>
                 {% empty %}
                     <li>Você ainda não tem avaliações para este perfil.</li>
@@ -64,41 +64,10 @@
             {% endif %}
         </div>
     </div>
-
     <style>
         .hidden {
             display: none;
         }
     </style>
-
-    <script>
-        function showMessage() {
-            const messages = document.querySelectorAll('.messages .alert'); 
-            messages.forEach(message => {
-                message.style.display = 'block'; 
-                setTimeout(() => {
-                    message.style.display = 'none'; 
-                }, 3000);
-            });
-        }
-      
-        window.onload = showMessage; 
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleBtn = document.getElementById("toggle-btn");
-            const hiddenItems = document.querySelectorAll(".evaluation-item.hidden");
-            let showAll = false;
-
-            if (toggleBtn) {
-                toggleBtn.addEventListener("click", function() {
-                    hiddenItems.forEach(item => {
-                        item.style.display = showAll ? "none" : "list-item";
-                    });
-                    toggleBtn.textContent = showAll ? "Ver mais" : "Ver menos";
-                    showAll = !showAll;
-                });
-            }
-        });
-    </script>
 </body>
 </html>

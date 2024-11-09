@@ -8,6 +8,8 @@
     <title>Enviar Mensagem</title>
 </head>
 <body>
+    {% include 'navbar.html' %}
+
     <div class="message-container">
         <h2>Enviar Mensagem para {{ recipient.username }}</h2>
         <form method="post" class="message-form">

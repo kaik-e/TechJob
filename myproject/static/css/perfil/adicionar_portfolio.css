@@ -1,0 +1,92 @@
+body {
+    background-color: rgb(31, 41, 55);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .add-portfolio-container {
+    background-color: rgb(15, 23, 42);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    color: #f8f8f8;
+    text-align: center;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .add-portfolio-container h2, .add-portfolio-container h3 {
+    color: #f8f8f8;
+    margin-bottom: 20px;
+  }
+  
+  .add-portfolio-container form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  
+  .add-portfolio-container input[type="text"],
+  .add-portfolio-container textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 7px;
+    background-color: rgb(55, 65, 81);
+    color: #f8f8f8;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .add-portfolio-container button[type="submit"] {
+    padding: 10px;
+    background-color: rgb(66, 180, 75);
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.12s, opacity 0.12s;
+  }
+  
+  .add-portfolio-container button[type="submit"]:hover {
+    background-color: rgb(55, 155, 65);
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+  }
+  
+  ul li {
+    background: rgb(55, 65, 81);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .back-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: rgb(66, 180, 75);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .back-btn:hover {
+    background-color: rgb(55, 155, 65);
+    transform: scale(1.05);
+  }
+  
+  .back-btn:active {
+    opacity: 0.6;
+  }
+  

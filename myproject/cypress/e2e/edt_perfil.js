@@ -6,6 +6,7 @@ describe('Teste de Editar o Perfil', () => {
     const cpf = '12345678901';
     const newUsername = `usuarioEditado${timestamp}`;
     const newDescription = 'Descrição editada com sucesso';
+    const newProfilePicture = 'foto.jpeg';  
 
     beforeEach(() => {
         cy.visit('/registrar/');
@@ -19,16 +20,17 @@ describe('Teste de Editar o Perfil', () => {
     });
 
     it('Deve permitir ao usuário editar seu perfil', () => {
-        cy.get('a > .profile-pic').should('be.visible').click();
+        cy.get('.profile-pic').eq(0).should('be.visible').click();
         cy.url().should('include', '/perfil');
-        cy.get('[href="/edit_profile/"]').should('be.visible').click();
-        
+        cy.wait(1000); 
+        cy.contains('Editar Perfil').should('be.visible').click(); 
         cy.get('input[name="username"]').clear().type(newUsername);
         cy.get('textarea[name="description"]').clear().type(newDescription);
+        cy.get('input[name="profile_picture"]').attachFile(newProfilePicture); 
         cy.get('.edit-profile-btn').click();
-        
         cy.contains('Perfil atualizado com sucesso!', { timeout: 10000 }).should('be.visible');
         cy.get('h2').should('contain', newUsername);
         cy.get('p').should('contain', newDescription);
+        cy.get('.prfl-pic img').should('have.attr', 'src').and('include', 'foto_');
     });
 });
