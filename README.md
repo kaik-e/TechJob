@@ -70,6 +70,10 @@ py manage.py runserver
 
 ### Sprint 1(Sprint 2 Total)
 
+![image](https://github.com/user-attachments/assets/ae269bbd-267d-4af6-acbb-6467aa32508d)
+![image](https://github.com/user-attachments/assets/a578f0b3-0a9a-408f-a3ec-3d4bb3fa79fe)
+
+
 ## Desenvolvido por:
 
 - [Caio Augusto](https://github.com/CaioAugustoMachadoDeMelo) - camm@cesar.school
