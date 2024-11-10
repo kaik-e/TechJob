@@ -19,7 +19,7 @@ from .views import (
     adicionar_portfolio,
     editar_skills,
     buscar_perfil_ajax,
-    enviar_mensagem,
+    # enviar_mensagem,
     adicionar_projeto,
     PerfilView,
 )
@@ -30,12 +30,12 @@ urlpatterns = [
     path('registrar/', registrar, name='registrar'),
     path('home/', home, name='home'),
     path('projetos/', listar_projetos, name='listar_projetos'),
-    path('perfil/<int:id>/', PerfilView.as_view(), name='perfil'),  # Certifique-se de que está correto
+    path('perfil/<int:id>/', PerfilView.as_view(), name='perfil'),  
     path('editar-perfil/', editar_perfil, name='editar_perfil'),
     path('portfolio/', portfolio, name='portfolio'),
     path('adicionar-portfolio/', adicionar_portfolio, name='adicionar_portfolio'),
     path('editar-skills/', editar_skills, name='editar_skills'),
-    path('enviar-mensagem/', enviar_mensagem, name='enviar_mensagem'),
+    # path('enviar-mensagem/', enviar_mensagem, name='enviar_mensagem'),
     path('adicionar-projeto/', adicionar_projeto, name='adicionar_projeto'),
     path('projeto/<int:id>/', projeto_detalhes, name='projeto_detalhes'),
     path('adicionar-avaliacao/<int:recipient_id>/', adicionar_avaliacao, name='adicionar_avaliacao'),

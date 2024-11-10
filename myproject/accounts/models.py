@@ -43,10 +43,9 @@ class Avaliacao(models.Model):
     def __str__(self):
         return f"Avaliação de {self.author.username} para {self.recipient.username}"
 
-class Mensagem(models.Model):
-    sender = models.ForeignKey(CustomUser, related_name='mensagens_enviadas', on_delete=models.CASCADE)
-    recipient = models.ForeignKey(CustomUser, related_name='mensagens_recebidas', on_delete=models.CASCADE)
-    content = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
-
+# class Mensagem(models.Model):
+#     sender = models.ForeignKey(CustomUser, related_name='mensagens_enviadas', on_delete=models.CASCADE)
+#     recipient = models.ForeignKey(CustomUser, related_name='mensagens_recebidas', on_delete=models.CASCADE)
+#     content = models.TextField()
+#     timestamp = models.DateTimeField(auto_now_add=True)
 

@@ -2,12 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.db import IntegrityError
-from .models import CustomUser, Avaliacao, Skill, Projeto, Portfolio, Mensagem
+from .models import CustomUser, Avaliacao, Skill, Projeto, Portfolio
 from django.http import JsonResponse
 import re
 from django.views import View
 from django.contrib.auth.views import LogoutView
-
 
 
 def buscar_perfil_ajax(request):
@@ -169,10 +168,6 @@ def portfolio(request):
     return render(request, 'portfolio.html', {'portfolios': portfolios_usuario})
 
 
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Portfolio
-
 def adicionar_portfolio(request):
     usuario = request.user
 
@@ -207,36 +202,31 @@ def editar_skills(request):
     habilidades_usuario = usuario.skills.all()
     return render(request, 'editar_skills.html', {'habilidades_usuario': habilidades_usuario})
 
-from django.core.mail import send_mail
-from django.conf import settings
-from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib import messages
-from .models import CustomUser
-
-def enviar_mensagem(request):
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            recipient_id = request.POST.get('recipient_id')
-            recipient = get_object_or_404(CustomUser, id=recipient_id)
-            content_message = request.POST.get('message_content')
-            if content_message:
-                try:
-                    send_mail(
-                        subject=f"Nova mensagem de {request.user.username}",
-                        message=content_message,
-                        from_email=settings.DEFAULT_FROM_EMAIL,
-                        recipient_list=[recipient.email],
-                    )
-                    messages.success(request, 'Mensagem enviada com sucesso!')
-                except Exception as e:
-                    messages.error(request, f"Erro ao enviar mensagem: {e}")
-                return redirect('perfil', id=recipient_id)  
-        recipient_id = request.GET.get('recipient_id')
-        recipient = get_object_or_404(CustomUser, id=recipient_id)
-        return render(request, 'enviar_mensagem.html', {'recipient': recipient})
-    else:
-        messages.error(request, 'Você precisa estar logado para enviar mensagens.')
-        return redirect('login_view')
+# Nãooconseguimos terminar de implementar essa parte
+# def enviar_mensagem(request):
+#     if request.user.is_authenticated:
+#         if request.method == 'POST':
+#             recipient_id = request.POST.get('recipient_id')
+#             recipient = get_object_or_404(CustomUser, id=recipient_id)
+#             content_message = request.POST.get('message_content')
+#             if content_message:
+#                 try:
+#                     send_mail(
+#                         subject=f"Nova mensagem de {request.user.username}",
+#                         message=content_message,
+#                         from_email=settings.DEFAULT_FROM_EMAIL,
+#                         recipient_list=[recipient.email],
+#                     )
+#                     messages.success(request, 'Mensagem enviada com sucesso!')
+#                 except Exception as e:
+#                     messages.error(request, f"Erro ao enviar mensagem: {e}")
+#                 return redirect('perfil', id=recipient_id)  
+#         recipient_id = request.GET.get('recipient_id')
+#         recipient = get_object_or_404(CustomUser, id=recipient_id)
+#         return render(request, 'enviar_mensagem.html', {'recipient': recipient})
+#     else:
+#         messages.error(request, 'Voc  precisa estar logado para enviar mensagens.')
+#         return redirect('login_view')
     
 def adicionar_projeto(request):
     if not request.user.is_authenticated:
@@ -265,15 +255,14 @@ def projeto_detalhes(request, id):
     projeto = get_object_or_404(Projeto, id=id)
     return render(request, 'projetos/projeto_detalhes.html', {'projeto': projeto})
 
-from django.contrib import messages
 
 def adicionar_avaliacao(request, recipient_id):
     recipient = get_object_or_404(CustomUser, id=recipient_id)
 
     if request.method == 'POST':
         comentario = request.POST.get('comment')
-        if not comentario:  # Verifica se o comentário está vazio
-            messages.error(request, 'Por favor, digite uma avaliação.')  # Mensagem de erro
+        if not comentario:  
+            messages.error(request, 'Por favor, digite uma avaliação.')  
         else:
             try:
                 avaliacao = Avaliacao(
@@ -283,7 +272,7 @@ def adicionar_avaliacao(request, recipient_id):
                 )
                 avaliacao.save()
                 messages.success(request, 'Avaliação enviada com sucesso!')
-                return redirect('adicionar_avaliacao', recipient_id=recipient_id)  # Redireciona para a mesma página após adicionar
+                return redirect('adicionar_avaliacao', recipient_id=recipient_id)  
             except Exception as e:
                 print(e)
                 messages.error(request, 'Ocorreu um erro ao enviar a avaliação.')

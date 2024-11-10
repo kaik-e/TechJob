@@ -31,7 +31,7 @@
                         <a href="{% url 'editar_perfil' %}" class="btn">Editar Perfil</a>
                     {% endif %}
                     <a href="{% url 'portfolio' %}" class="btn">Portfólio</a>
-                    <a href="{% url 'enviar_mensagem' %}?recipient_id={{ user.id }}" class="btn">Mensagem</a>
+                    <!--<a Mensagem</a>-->
                     <a href="{% url 'adicionar_avaliacao' user.id %}" class="btn">Adicionar Avaliação</a>
                 </div>
             </div>
@@ -69,5 +69,7 @@
             display: none;
         }
     </style>
+
+    <script src="{% static 'js/perfil.js' %}"></script>
 </body>
 </html>

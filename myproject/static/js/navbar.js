@@ -2,14 +2,12 @@ document.getElementById('search-input').addEventListener('input', function() {
     let query = this.value;
     let resultsContainer = document.getElementById('search-results');
     
-    // Verificar se há texto na busca
     if (query.length > 0) {
         fetch(`/buscar/?q=${query}`)
             .then(response => response.json())
             .then(data => {
                 resultsContainer.innerHTML = '';  
                 
-                // Adicionar resultados de pesquisa
                 if (data.usuarios.length > 0 || data.projetos.length > 0) {
                     data.usuarios.forEach(usuario => {
                         let li = document.createElement('li');
@@ -30,7 +28,7 @@ document.getElementById('search-input').addEventListener('input', function() {
                     });
 
                     resultsContainer.style.display = 'block';
-                    resultsContainer.style.maxHeight = '200px'; // Limita a altura
+                    resultsContainer.style.maxHeight = '200px'; 
                 } else {
                     resultsContainer.innerHTML = '<li>Nenhum resultado encontrado</li>';
                     resultsContainer.style.display = 'block';
