@@ -70,8 +70,13 @@ py manage.py runserver
 
 ### Sprint 1(Sprint 2 Total)
 
-![image](https://github.com/user-attachments/assets/ae269bbd-267d-4af6-acbb-6467aa32508d)
-![image](https://github.com/user-attachments/assets/a578f0b3-0a9a-408f-a3ec-3d4bb3fa79fe)
+![image](https://github.com/user-attachments/assets/031bac23-a64a-40cf-83e7-a79d7c087890)
+
+![image](https://github.com/user-attachments/assets/20b3d039-04d0-41d4-b80a-fd3957befefe)
+
+![image](https://github.com/user-attachments/assets/042e5402-9bd7-4458-bc39-67c699b570c0)
+
+![image](https://github.com/user-attachments/assets/8caaac13-06e7-4dc1-ae3a-9bb8719d3f3a)
 
 
 ## Desenvolvido por:
