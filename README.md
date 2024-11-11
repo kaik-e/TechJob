@@ -82,6 +82,22 @@ Screecast Dos Testes E2E:
 ### Deploy
 
 Screcast Do Deploy:
+## Issue
+
+Erro 1:
+![image](https://github.com/user-attachments/assets/9196cff5-11e6-4a54-b92a-cc722c09a20b)
+
+Erro 2:
+![image](https://github.com/user-attachments/assets/c61fe7f7-1977-49a4-b41a-eb1793dd7259)
+
+Erro 3:
+![image](https://github.com/user-attachments/assets/6f77998b-a511-433e-b657-93eaee04433e)
+
+Erro 4:
+
+
+Erro 5:
+
 
 ### Como Contribuir
 
