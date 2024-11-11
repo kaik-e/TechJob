@@ -169,9 +169,8 @@ def portfolio(request, user_id=None):
     if user_id:
         recipient = get_object_or_404(CustomUser, id=user_id)
     else:
-        recipient = request.user  # Se não for passado o user_id, exibe os portfólios do usuário logado
+        recipient = request.user  #
 
-    # Filtra os portfólios do usuário específico
     portfolios_usuario = Portfolio.objects.filter(user=recipient)
 
     return render(request, 'portfolio.html', {
@@ -181,22 +180,20 @@ def portfolio(request, user_id=None):
 
 
 def adicionar_portfolio(request):
-    usuario = request.user  # Usuário autenticado
+    usuario = request.user 
 
     if request.method == 'POST':
         titulo = request.POST.get('title')
         descricao = request.POST.get('description')
 
-        # Verificar se os campos estão preenchidos
+
         if not titulo.strip() or not descricao.strip():
             messages.error(request, 'Por favor, preencha todos os campos corretamente.')
         else:
-            # Criar o novo portfólio associado ao usuário
             Portfolio.objects.create(user=usuario, title=titulo, description=descricao)
             messages.success(request, 'Portfólio adicionado com sucesso!')
             return redirect('adicionar_portfolio')
 
-    # Carregar os portfólios do usuário autenticado
     portfolios_usuario = usuario.portfolios.all()
     return render(request, 'adicionar_portfolio.html', {'portfolios': portfolios_usuario})
 
@@ -267,17 +264,14 @@ def adicionar_projeto(request):
     return render(request, 'adicionar_projeto.html')
 
 
-
 def projeto_detalhes(request, id):
     projeto = get_object_or_404(Projeto, id=id)
     return render(request, 'projetos/projeto_detalhes.html', {'projeto': projeto})
 
 
 def adicionar_avaliacao(request, recipient_id):
-    recipient = get_object_or_404(CustomUser, id=recipient_id)
 
     if request.method == 'POST':
-        comentario = request.POST.get('comment')
         if not comentario:  
             messages.error(request, 'Por favor, digite uma avaliação.')  
         else:
@@ -289,7 +283,6 @@ def adicionar_avaliacao(request, recipient_id):
                 )
                 avaliacao.save()
                 messages.success(request, 'Avaliação enviada com sucesso!')
-                return redirect('adicionar_avaliacao', recipient_id=recipient_id)  
             except Exception as e:
                 print(e)
                 messages.error(request, 'Ocorreu um erro ao enviar a avaliação.')
