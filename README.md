@@ -77,10 +77,9 @@ Screecast Do Figma:
 
 ### Testes E2E:
 
-Screecast Dos Testes E2E:
+1- Teste De Adicionar e Visualizar Avaliação: https://youtu.be/ypM9ooOl2iM
 
-Teste De Adicionar e Visualizar Avaliação:
-https://youtu.be/ypM9ooOl2iM
+2- Teste De Adicionar e Visualizar Portifolio: https://youtu.be/6_EAOXhrMgU
 
 ### Deploy
 
