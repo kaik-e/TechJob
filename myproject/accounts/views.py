@@ -264,14 +264,17 @@ def adicionar_projeto(request):
     return render(request, 'adicionar_projeto.html')
 
 
+
 def projeto_detalhes(request, id):
     projeto = get_object_or_404(Projeto, id=id)
     return render(request, 'projetos/projeto_detalhes.html', {'projeto': projeto})
 
 
 def adicionar_avaliacao(request, recipient_id):
+    recipient = get_object_or_404(CustomUser, id=recipient_id)
 
     if request.method == 'POST':
+        comentario = request.POST.get('comment')
         if not comentario:  
             messages.error(request, 'Por favor, digite uma avaliação.')  
         else:
@@ -283,6 +286,7 @@ def adicionar_avaliacao(request, recipient_id):
                 )
                 avaliacao.save()
                 messages.success(request, 'Avaliação enviada com sucesso!')
+                return redirect('adicionar_avaliacao', recipient_id=recipient_id)  
             except Exception as e:
                 print(e)
                 messages.error(request, 'Ocorreu um erro ao enviar a avaliação.')
