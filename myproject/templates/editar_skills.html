@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/perfil/edit_skills.css' %}">
     <title>Editar Skills</title>
 </head>
@@ -21,6 +22,7 @@
         {% endfor %}
 
         <form method="POST" class="edit-skills-form">
+            {% csrf_token %}
             <label for="skill_name" class="skill-label">Adicionar uma nova skill:</label>
             <input type="text" name="skill_name" id="skill_name" class="new-skill-input" placeholder="Adicione sua skill">
             <button type="submit" class="edit-skills-btn">Salvar skill</button>
@@ -37,7 +39,7 @@
             {% endfor %}
         </ul>
 
-        <a href="{% url 'editar_perfil_inexistente' %}" class="back-btn btn">Voltar para o editar perfil</a>
+        <a href="{% url 'editar_perfil' %}" class="back-btn btn">Voltar para o editar perfil</a>
     </div>
 </body>
 </html>
