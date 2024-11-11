@@ -83,6 +83,11 @@ Screecast Dos Testes E2E:
 
 Screcast Do Deploy:
 
+### Contribuiting:
+
+https://github.com/kaik-e/TechJob/blob/main/CONTRIBUTING.md
+
+https://github.com/kaik-e/TechJob/blob/main/CODE_OF_CONDUCT.md
 
 
 ## Desenvolvido por:
