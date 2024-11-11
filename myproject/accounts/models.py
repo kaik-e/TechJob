@@ -20,6 +20,10 @@ class Skill(models.Model):
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=255)
+    descricao = models.TextField()
+    usuario = models.ForeignKey(CustomUser, related_name='projetos', on_delete=models.CASCADE)
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
     filtro = models.CharField(max_length=100, default='valor_padrao')
 
 class Portfolio(models.Model):
