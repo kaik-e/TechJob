@@ -4,10 +4,7 @@ describe('Teste de Adicionar e Visualizar Portfólio No Perfil', () => {
     const password = 'senhaSegura123';
     const email = `usuario${timestamp}@example.com`;
     const cpf = '12345678901';
-    const portfolioTitle = 'Meu Primeiro Portfólio';
-    const portfolioDescription = 'Este é o meu primeiro portfólio de exemplo.';
-    const emptyTitle = '';
-    const emptyDescription = '';
+
 
     beforeEach(() => {
         cy.visit('/registrar/');
@@ -26,7 +23,7 @@ describe('Teste de Adicionar e Visualizar Portfólio No Perfil', () => {
         
         cy.contains('Editar Perfil').click();
         cy.url().should('include', '/editar-perfil');
-        cy.contains('Adicionar Portfólio').click();
+        cy.contains('Adicionar portfólio').click();
         cy.url().should('include', '/adicionar-portfolio');
         
         cy.get('input[name="title"]').clear().type(' ');
@@ -41,12 +38,12 @@ describe('Teste de Adicionar e Visualizar Portfólio No Perfil', () => {
         
         cy.contains('Portfólio adicionado com sucesso!').should('be.visible'); 
         
-        cy.contains('Voltar para o Editar Perfil').click();
+        cy.contains('Voltar para o editar perfil').click();
         cy.url().should('include', '/editar-perfil');
         
-        cy.contains('Voltar ao Perfil').click();
+        cy.contains('Voltar para o perfil').click();
         cy.url().should('include', '/perfil');
-        cy.get('[href="/portfolio/"]').click();
+        cy.contains('Portfólio').click();
         cy.url().should('include', '/portfolio');
     });
 });

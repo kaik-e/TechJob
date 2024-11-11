@@ -68,7 +68,26 @@ py manage.py runserver
 
 ### Entrega 4
 
-### Sprint 1(Sprint 2 Total)
+
+### Jira:
+
+### Atualização Do Figma:
+
+Screecast Do Figma:
+
+### Testes E2E:
+
+Screecast Dos Testes E2E:
+
+### Deploy
+
+Screcast Do Deploy:
+
+### Como Contribuir
+
+Ficamos felizes que você tenha interesse em contribuir para o projeto! Para começar, consulte o arquivo [CONTRIBUTING.md](CONTRIBUTING.md), onde você encontrará informações detalhadas sobre como configurar o ambiente, como reportar problemas, sugerir melhorias e enviar suas contribuições.
+
+Também pedimos que leia nosso [Código de Conduta](https://github.com/kaik-e/TechJob/blob/main/CODE_OF_CONDUCT.md) para garantir um ambiente de colaboração respeitoso e inclusivo para todos os participantes.
 
 ## Desenvolvido por:
 
