@@ -100,6 +100,9 @@ Erro 4:
 Erro 5:
 ![image](https://github.com/user-attachments/assets/9deb26b6-bca6-4931-932a-0981776a4c66)
 
+Erro 6:
+![image](https://github.com/user-attachments/assets/a199da78-8dc0-4b07-8e42-0b53859eebc7)
+
 
 ### Como Contribuir
 
