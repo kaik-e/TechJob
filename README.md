@@ -95,6 +95,7 @@ Erro 3:
 ![image](https://github.com/user-attachments/assets/6f77998b-a511-433e-b657-93eaee04433e)
 
 Erro 4:
+![image](https://github.com/user-attachments/assets/5e258130-73d9-406e-b8c6-0cbed0276c28)
 
 
 Erro 5:
