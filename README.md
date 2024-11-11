@@ -68,7 +68,6 @@ py manage.py runserver
 
 ### Entrega 4
 
-### Sprint 1(Sprint 2 Total)
 
 ### Jira:
 
