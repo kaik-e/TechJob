@@ -26,7 +26,7 @@ describe('Teste Da Navbar', () => {
   
     cy.get('form').invoke('prop', 'noValidate', true);
   
-    cy.get('.container > form > button').click();
+    cy.get('.add-project-button > .add-project-text').click();
   
     cy.contains('Projeto adicionado com sucesso!').should('be.visible');
 

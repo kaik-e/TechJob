@@ -20,10 +20,10 @@
         <form method="post">
             {% csrf_token %}
             
-            <label for="titulo">Título:</label>
+            <label for="titulo">Título</label>
             <input type="text" name="titulo" id="titulo" required>
             
-            <label for="descricao">Descrição:</label>
+            <label for="descricao">Descrição</label>
             <textarea name="descricao" id="descricao" required></textarea>
             
             <label for="filtro">Filtro:</label>
@@ -39,6 +39,6 @@
                 <button class="add-project-text" type="submit">Adicionar Projeto</button>
             </div>
         </form>                  
-<a href="{% url 'home' %}?filtro={{ request.GET.filtro }}" class="text-blue-500 mt-4 inline-block">Voltar para a Home</a>    </div>
+<a href="{% url 'home' %}?filtro={{ request.GET.filtro }}" class="text-blue-500 mt-4 inline-block">Voltar para a home</a>    </div>
 </body>
 </html>

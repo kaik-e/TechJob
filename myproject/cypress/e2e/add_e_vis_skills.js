@@ -24,7 +24,7 @@ describe('Teste de Adicionar Skill', () => {
         
         cy.contains('Editar Perfil').click();
         cy.url().should('include', '/editar-perfil');
-        cy.contains('Editar Skills').click();
+        cy.contains('Editar skills').click();
 
         cy.get('input[name="skill_name"]').clear();
         cy.get('.edit-skills-container > form > button').should('be.visible').click();
@@ -36,10 +36,10 @@ describe('Teste de Adicionar Skill', () => {
 
         cy.contains('Skill adicionada com sucesso!').should('be.visible');
         
-        cy.contains('Voltar para o Editar Perfil').click();
+        cy.contains('Voltar para o editar perfil').click();
         cy.url().should('include', '/editar-perfil');
 
-        cy.contains('Voltar ao Perfil').click();
+        cy.contains('Voltar para o perfil').click();
         cy.url().should('include', '/perfil');
 
         cy.get('.skills-list').should('contain', newSkill);

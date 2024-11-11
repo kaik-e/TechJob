@@ -1,5 +1,8 @@
 body {
-  background-color: rgb(31, 41, 55);
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #1a202c;
+  color: #cbd5e0;
 }
 
 .back-btn {
@@ -264,7 +267,7 @@ body {
 .evaluations-list {
   display: flex;
   flex-direction: column;
-  gap: -15px; 
+  gap: 15px; 
 }
 
 .evaluation-item {
@@ -276,3 +279,21 @@ body {
   margin-bottom: 10px; 
 }
 
+.evaluation-author {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.evaluation-author .author-name {
+  font-weight: bold;
+}
+
+.evaluation-comment {
+  margin-top: 5px;
+}

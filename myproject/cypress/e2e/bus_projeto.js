@@ -23,7 +23,7 @@ describe('Teste de Buscar Projeto', () => {
     cy.get('textarea[name="descricao"]').type('Descrição do projeto');
     cy.get('select[name="filtro"]').select('frontend');
     cy.get('form').invoke('prop', 'noValidate', true);
-    cy.get('.container > form > button').click();
+    cy.get('.add-project-button > .add-project-text').click();
     cy.contains('Projeto adicionado com sucesso!').should('be.visible');
     cy.wait(2000);
     cy.get('a.text-blue-500').should('be.visible').click();

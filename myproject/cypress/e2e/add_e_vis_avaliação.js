@@ -4,7 +4,6 @@ describe('Teste de Adicionar e Visualizar Avaliação No Perfil', () => {
     const password = 'senhaSegura123';
     const email = `usuario${timestamp}@example.com`;
     const cpf = '12345678901';
-    const comentarioVazio = '';
     const comentarioComEspacos = '     ';
     const comentarioValido = 'Ótimo trabalho, muito dedicado e competente!';
 

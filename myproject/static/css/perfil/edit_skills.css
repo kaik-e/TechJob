@@ -1,6 +1,7 @@
 body {
-    background-color: rgb(31, 41, 55);
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    background-color: #1a202c;
+    color: #cbd5e0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +23,7 @@ body {
     margin-bottom: 20px;
     font-size: 24px;
     color: #f8f8f8;
-    font-weight: bold;
+    font-weight: bold
 
 }
 
@@ -33,7 +34,6 @@ body {
     font-weight: normal; 
     margin-bottom: 10px; 
 }
-
 
 
 .edit-skills-form {
@@ -71,6 +71,8 @@ body {
     transition: background-color 0.12s, opacity 0.12s;
     width: 100%;
     margin-top: -10px;
+    font-weight: bold;
+
 }
 
 .edit-skills-btn:hover {
