@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Minimalista</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home/navbar.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="{% url 'home' %}" class="nav-link">
+                <img src="{% static 'img\logo.svg' %}" alt="">
+            </a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar usuários ou projetos..." />
+            <ul id="search-results"></ul>
+        </div>
+        <div class="profile-icon">
+            <a href="{% url 'perfil' request.user.id %}">
+                {% if request.user.profile_picture %}
+                    <img src="{{ request.user.profile_picture.url }}" alt="Foto de perfil" class="profile-pic" />
+                {% else %}
+                    <img src="{% static 'img\default_pfp.png' %}" alt="Foto de perfil padrão" class="profile-pic" />
+                {% endif %}
+            </a>
+            <form method="post" action="{% url 'logout' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Sair</button>
+            </form>
+        </div>
+    </nav>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+</body>
+</html>
