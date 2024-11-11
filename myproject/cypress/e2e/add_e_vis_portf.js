@@ -21,7 +21,7 @@ describe('Teste de Adicionar e Visualizar Portfólio No Perfil', () => {
     });
 
     it('Deve não adicionar portfólio vazio e depois adicionar um portfólio válido e visualizá-lo', () => {
-        cy.get('.profile-pic').eq(0).click();
+        cy.get('.profile-pic').first().click();
         cy.url().should('include', '/perfil');
         
         cy.contains('Editar Perfil').click();
@@ -31,23 +31,22 @@ describe('Teste de Adicionar e Visualizar Portfólio No Perfil', () => {
         
         cy.get('input[name="title"]').clear().type(' ');
         cy.get('textarea[name="description"]').clear().type(' ');
-        cy.get('button[type="submit"]').click();
-
+        cy.get('.add-portfolio-container > form > button').click();
+        
         cy.contains('Por favor, preencha todos os campos corretamente.').should('be.visible');
         
         cy.get('input[name="title"]').clear().type('Portfólio Válido');
         cy.get('textarea[name="description"]').clear().type('Descrição válida');
-        cy.get('button[type="submit"]').click();
+        cy.get('.add-portfolio-container > form > button').click();
         
         cy.contains('Portfólio adicionado com sucesso!').should('be.visible'); 
-
+        
         cy.contains('Voltar para o Editar Perfil').click();
         cy.url().should('include', '/editar-perfil');
         
         cy.contains('Voltar ao Perfil').click();
         cy.url().should('include', '/perfil');
-        
-        cy.contains('Portfólio').click();
+        cy.get('[href="/portfolio/"]').click();
         cy.url().should('include', '/portfolio');
     });
 });

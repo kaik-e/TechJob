@@ -1,4 +1,4 @@
-describe('Teste de Visualização Detlahes De Um Projeto', () => {
+describe('Teste de Visualização Detalhes De Um Projeto', () => {
     const timestamp = Date.now();
     const username = `usuario${timestamp}`;
     const password = 'senhaSegura123';
@@ -16,9 +16,14 @@ describe('Teste de Visualização Detlahes De Um Projeto', () => {
         cy.url().should('include', '/home');
     });
 
-    it('Deve permitir ao usuário visualizar seu perfil', () => {
-        cy.get('a > .profile-pic').should('be.visible').click();
-        cy.url().should('include', '/perfil');
-        cy.get('h2').should('contain', username);
+    it('Deve clicar em "Ver mais" de um projeto e acessar seus detalhes', () => {
+        cy.get('.projects-grid')
+            .find('.project-item')
+            .first()
+            .find('.view-more-link')
+            .click();
+        
+        cy.url().should('include', '/projeto/');
+        cy.get('.projeto-titulo').should('be.visible');
     });
 });

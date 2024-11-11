@@ -62,9 +62,9 @@
                         <div class="author-name">{{ projeto.usuario.username }}</div>
                     </a>
                 </div>
-                <div class="view-more">
-                    <a href="{% url 'projeto_detalhes' projeto.id %}" class="view-more-link">Ver mais</a>
-                </div>
+                    <a href="{% url 'projeto_detalhes' projeto.id %}" class="view-more-link">
+                    <div class="view-more">Ver mais</div>
+                    </a>
             </div>
             {% endfor %}
         </div>

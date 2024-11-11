@@ -19,11 +19,18 @@ body {
     align-items: center;
     justify-content: space-between;
     background-color: #1a202c;
-    position: sticky;
+    position: sticky; 
     top: 0;
+    width: 100%;
     padding: 1rem 0;
-    z-index: 1000;
+    z-index: 999; 
+    transition: top 0.3s ease;
 }
+
+.header.hidden {
+    top: -100px; 
+}
+
 
 .titulo {
     font-size: 2.5rem;
@@ -35,17 +42,18 @@ body {
     display: flex;
     align-items: center;
     background-color: #2d3748;
-    border-radius: 1.25rem;
+    border-radius: 0.5rem;
+    margin-left: 1%;
     padding: 0.5rem;
-    position: relative;
-    width: 250px; /* Diminui a largura da barra de pesquisa */
+    position: initial;
+    width: 250px; 
 }
 
 #home-search-input {
     background-color: transparent;
     border: none;
     outline: none;
-    color: #cbd5e0;
+    color: #2f855a;
     padding-left: 1rem;
     width: 100%;
 }
@@ -58,7 +66,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    border-radius: 50%;
+    border-radius: 0.1rem;
     transition: background-color 0.3s ease;
 }
 
@@ -80,16 +88,18 @@ body {
 .filter-container {
     position: relative;
     margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .filter-button {
     background-color: #1a202c;
     border: 1px solid #4a5568;
-    border-radius: 1.25rem;
+    border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-right: 40%;
     transition: background-color 0.3s ease;
 }
 
@@ -104,7 +114,7 @@ body {
 .filter-dropdown {
     background-color: #2d3748;
     color: #ffffff;
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
     position: absolute;
     margin-top: 0.25rem;
     width: 10rem;
@@ -113,6 +123,7 @@ body {
 }
 
 .filter-item {
+    display: block;
     padding: 0.75rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -129,7 +140,7 @@ body {
 .add-project-button {
     background-color: #38a169;
     border: 1px solid #48bb78;
-    border-radius: 1.25rem;
+    border-radius: 0.5rem;
     padding: 0.5rem 1.5rem;
     display: flex;
     align-items: center;
@@ -142,7 +153,8 @@ body {
     background-color: #2f855a;
 }
 
-.add-project-text {
+.add-project-text { 
+    text-decoration: none;
     color: #ffffff;
     font-size: 0.875rem;
 }
@@ -166,6 +178,7 @@ body {
 }
 
 .project-item:hover {
+    cursor: default;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
@@ -223,18 +236,22 @@ body {
 
 .view-more {
     display: flex;
-    justify-content: flex-end;
+    border-radius: 0.5rem;
+    padding: 5%;
+    background-color: #38a169;
+    justify-content: center;
     margin-top: 1rem;
 }
 
 .view-more-link {
-    color: #38a169;
+    color: white;
     font-size: 1rem;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .view-more-link:hover {
-    color: #2f855a;
-    text-decoration: underline;
+    color: white;
+    font-weight: 600;
+    transition: 300ms ease-in-out;
 }

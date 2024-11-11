@@ -18,9 +18,13 @@
         {% endfor %}
         <form method="POST">
             {% csrf_token %}
-            <input type="text" name="title" placeholder="Título do Portfólio" required>
-            <textarea name="description" placeholder="Descrição do Portfólio" required></textarea>
-            <button type="submit">Adicionar Portfólio</button>
+            <label for="title" class="portfolio-label">Título:</label>
+            <input type="text" name="title" id="title" class="portfolio-input" placeholder="Título do Portfólio" required>
+            
+            <label for="description" class="portfolio-label">Descrição:</label>
+            <textarea name="description" id="description" class="portfolio-input" placeholder="Descrição do Portfólio" required></textarea>
+            
+            <button type="submit">Salvar portfólio</button>
         </form>
         <h3>Meus Portfólios</h3>
         <ul>
@@ -31,8 +35,8 @@
             {% endfor %}
         </ul>
         <button class="back-btn">
-            <a href="{% url 'editar_perfil' %}" style="color: #ffffff; text-decoration: none;">Voltar para o Editar Perfil</a>
+            <a href="{% url 'editar_perfil' %}" class="back-link">Voltar para o editar perfil</a>
         </button>        
-    </div>
+    </div>       
 </body>
 </html>

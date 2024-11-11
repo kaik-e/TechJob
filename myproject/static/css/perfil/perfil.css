@@ -255,16 +255,24 @@ body {
   color: #f8f8f8;
 }
 
+.prfl-evaluations ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
 .evaluations-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: -15px; 
 }
 
 .evaluation-item {
   background-color: rgb(75, 85, 99);
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
   color: #ffffff;
   font-size: 14px;
+  margin-bottom: 10px; 
 }
+

@@ -8,6 +8,19 @@ body {
     margin: 0;
   }
   
+  .portfolio-label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left; 
+    font-size: 16px;
+    color: #f8f8f8;
+}
+
+.portfolio-input {
+    text-align: left; 
+}
+
+
   .add-portfolio-container {
     background-color: rgb(15, 23, 42);
     padding: 40px;
@@ -20,10 +33,17 @@ body {
     overflow-y: auto;
   }
   
-  .add-portfolio-container h2, .add-portfolio-container h3 {
+  .add-portfolio-container h2{
     color: #f8f8f8;
     margin-bottom: 20px;
   }
+
+  .add-portfolio-container h3 {
+    color: #f8f8f8;
+    margin-bottom: 10px;
+    text-align: left; 
+}
+
   
   .add-portfolio-container form {
     display: flex;
@@ -74,19 +94,30 @@ body {
   .back-btn {
     display: inline-block;
     padding: 12px 20px;
-    background-color: rgb(66, 180, 75);
-    color: white;
+    text-align: center;
+    background: none; /* Sem fundo */
+    border: none; /* Sem borda */
+    transition: transform 0.2s;
+}
+
+.back-btn .back-link {
+    color: rgb(66, 180, 75); /* Texto verde */
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .back-btn:hover {
-    background-color: rgb(55, 155, 65);
-    transform: scale(1.05);
-  }
-  
-  .back-btn:active {
-    opacity: 0.6;
-  }
+    font-weight: bold; /* Texto em negrito */
+    font-size: 18px; /* Tamanho do texto aumentado */
+}
+
+.back-btn .back-link:hover {
+    transform: scale(1.05); /* Efeito de aumento no hover */
+}
+
+.back-btn .back-link:active {
+    opacity: 0.6; /* Efeito de clique */
+}
+
+
+
+
+
+
   

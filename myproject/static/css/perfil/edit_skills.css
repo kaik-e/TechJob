@@ -22,13 +22,26 @@ body {
     margin-bottom: 20px;
     font-size: 24px;
     color: #f8f8f8;
+    font-weight: bold;
+
 }
+
+.edit-skills-container h3 {
+    text-align: left;
+    font-size: 16px; 
+    color: #f8f8f8;  
+    font-weight: normal; 
+    margin-bottom: 10px; 
+}
+
+
 
 .edit-skills-form {
     display: flex;
     flex-direction: column;
 }
 
+.edit-profile-input,
 .edit-skills-form input[type="text"] {
     padding: 10px;
     margin-bottom: 20px;
@@ -37,8 +50,12 @@ body {
     background-color: rgb(55, 65, 81);
     color: #f8f8f8;
     font-size: 16px;
+    outline: none;
+    width: 93%;
+    text-align: left;
 }
 
+.edit-profile-input::placeholder,
 .edit-skills-form input[type="text"]::placeholder {
     color: rgba(248, 248, 248, 0.7);
 }
@@ -52,6 +69,8 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.12s, opacity 0.12s;
+    width: 100%;
+    margin-top: -10px;
 }
 
 .edit-skills-btn:hover {
@@ -77,21 +96,30 @@ ul li {
 }
 
 .back-btn {
-    padding: 10px 15px;
-    margin-top: 20px;
-    background-color: rgb(66, 180, 75);
-    color: #ffffff;
+    color: rgb(66, 180, 75);
     text-decoration: none;
-    border-radius: 7px;
-    transition: background-color 0.12s, opacity 0.12s;
-    border: none;
-    cursor: pointer;
+    transition: color 0.12s ease;
+    font-weight: bold;
 }
 
 .back-btn:hover {
-    background-color: rgb(55, 155, 65);
+    color: rgb(55, 155, 65);
 }
 
 .back-btn:active {
     opacity: 0.6;
 }
+
+
+.edit-skills-form label {
+    display: block; 
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 16px;
+    color: #f8f8f8;
+}
+
+
+
+
+

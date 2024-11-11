@@ -11,7 +11,7 @@
     {% include 'navbar.html' %}
     
     <div class="portfolio-content">
-        <h1>Meus Portfólio</h1>
+        <h1>Meus Portfólios</h1>
         <div class="portfolio-container">
             {% if portfolios %}
                 <ul>
@@ -25,7 +25,12 @@
             {% else %}
                 <p class="no-portfolios">Você ainda não adicionou nenhum portfólio.</p>
             {% endif %}
-        </div>        
+        </div>
+        
+        <a href="{% url 'perfil' recipient.id %}" class="back-btn">
+            <span class="back-link">Voltar para o perfil</span>
+        </a>        
+        
     </div>
 </body>
 </html>

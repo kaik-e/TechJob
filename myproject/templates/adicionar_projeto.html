@@ -35,8 +35,9 @@
                 <option value="design">Projeto de Design</option>
                 <option value="mobile">Projeto Mobile</option>
             </select>
-            
-            <button type="submit">Adicionar Projeto</button>
+            <div class="add-project-button add-project-text">
+                <button class="add-project-text" type="submit">Adicionar Projeto</button>
+            </div>
         </form>                  
 <a href="{% url 'home' %}?filtro={{ request.GET.filtro }}" class="text-blue-500 mt-4 inline-block">Voltar para a Home</a>    </div>
 </body>

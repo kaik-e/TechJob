@@ -8,7 +8,6 @@ import re
 from django.views import View
 from django.contrib.auth.views import LogoutView
 
-
 def buscar_perfil_ajax(request):
     query = request.GET.get('q', '').strip()
     if not query:
@@ -163,25 +162,41 @@ def editar_perfil(request):
         'portfolio_usuario': portfolio_usuario,
     })
 
-def portfolio(request):
-    portfolios_usuario = Portfolio.objects.filter(user=request.user)
-    return render(request, 'portfolio.html', {'portfolios': portfolios_usuario})
+from django.shortcuts import render, get_object_or_404
+from .models import Portfolio, CustomUser
+
+def portfolio(request, user_id=None):
+    if user_id:
+        recipient = get_object_or_404(CustomUser, id=user_id)
+    else:
+        recipient = request.user  # Se não for passado o user_id, exibe os portfólios do usuário logado
+
+    # Filtra os portfólios do usuário específico
+    portfolios_usuario = Portfolio.objects.filter(user=recipient)
+
+    return render(request, 'portfolio.html', {
+        'portfolios': portfolios_usuario,
+        'recipient': recipient
+    })
 
 
 def adicionar_portfolio(request):
-    usuario = request.user
+    usuario = request.user  # Usuário autenticado
 
     if request.method == 'POST':
         titulo = request.POST.get('title')
         descricao = request.POST.get('description')
 
+        # Verificar se os campos estão preenchidos
         if not titulo.strip() or not descricao.strip():
             messages.error(request, 'Por favor, preencha todos os campos corretamente.')
         else:
+            # Criar o novo portfólio associado ao usuário
             Portfolio.objects.create(user=usuario, title=titulo, description=descricao)
             messages.success(request, 'Portfólio adicionado com sucesso!')
             return redirect('adicionar_portfolio')
 
+    # Carregar os portfólios do usuário autenticado
     portfolios_usuario = usuario.portfolios.all()
     return render(request, 'adicionar_portfolio.html', {'portfolios': portfolios_usuario})
 
@@ -202,32 +217,33 @@ def editar_skills(request):
     habilidades_usuario = usuario.skills.all()
     return render(request, 'editar_skills.html', {'habilidades_usuario': habilidades_usuario})
 
-# Nãooconseguimos terminar de implementar essa parte
-# def enviar_mensagem(request):
-#     if request.user.is_authenticated:
-#         if request.method == 'POST':
-#             recipient_id = request.POST.get('recipient_id')
-#             recipient = get_object_or_404(CustomUser, id=recipient_id)
-#             content_message = request.POST.get('message_content')
-#             if content_message:
-#                 try:
-#                     send_mail(
-#                         subject=f"Nova mensagem de {request.user.username}",
-#                         message=content_message,
-#                         from_email=settings.DEFAULT_FROM_EMAIL,
-#                         recipient_list=[recipient.email],
-#                     )
-#                     messages.success(request, 'Mensagem enviada com sucesso!')
-#                 except Exception as e:
-#                     messages.error(request, f"Erro ao enviar mensagem: {e}")
-#                 return redirect('perfil', id=recipient_id)  
-#         recipient_id = request.GET.get('recipient_id')
-#         recipient = get_object_or_404(CustomUser, id=recipient_id)
-#         return render(request, 'enviar_mensagem.html', {'recipient': recipient})
-#     else:
-#         messages.error(request, 'Voc  precisa estar logado para enviar mensagens.')
-#         return redirect('login_view')
+def enviar_mensagem(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            recipient_id = request.POST.get('recipient_id')
+            recipient = get_object_or_404(CustomUser, id=recipient_id)
+            content_message = request.POST.get('message_content')
+            if content_message:
+                try:
+                    send_mail(
+                        subject=f"Nova mensagem de {request.user.username}",
+                        message=content_message,
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[recipient.email],
+                    )
+                    messages.success(request, 'Mensagem enviada com sucesso!')
+                except Exception as e:
+                    messages.error(request, f"Erro ao enviar mensagem: {e}")
+                return redirect('perfil', id=recipient_id)  
+        recipient_id = request.GET.get('recipient_id')
+        recipient = get_object_or_404(CustomUser, id=recipient_id)
+        return render(request, 'enviar_mensagem.html', {'recipient': recipient})
+    else:
+        messages.error(request, 'Voc  precisa estar logado para enviar mensagens.')
+        return redirect('login_view')
     
+
+
 def adicionar_projeto(request):
     if not request.user.is_authenticated:
         messages.error(request, 'Você precisa estar logado para adicionar um projeto.')
@@ -241,14 +257,15 @@ def adicionar_projeto(request):
         if not titulo or not descricao or not filtro:
             messages.error(request, 'Por favor, preencha todos os campos e selecione um filtro.')
             return render(request, 'adicionar_projeto.html')
-              
-              
+        
         novo_projeto = Projeto(titulo=titulo, descricao=descricao, filtro=filtro, usuario=request.user)
         novo_projeto.save()
+
         messages.success(request, 'Projeto adicionado com sucesso!')
-        return redirect('home')
+        return render(request, 'adicionar_projeto.html')  
 
     return render(request, 'adicionar_projeto.html')
+
 
 
 def projeto_detalhes(request, id):

@@ -19,33 +19,29 @@ describe('Teste de Adicionar Skill', () => {
     });
 
     it('Deve não adicionar skill vazia e depois adicionar uma skill válida', () => {
-        cy.get('.profile-pic').eq(0).click();
+        cy.get('.profile-pic').first().click();
         cy.url().should('include', '/perfil');
         
         cy.contains('Editar Perfil').click();
         cy.url().should('include', '/editar-perfil');
         cy.contains('Editar Skills').click();
 
-        cy.get('form > [type="text"]').clear();
-        cy.get('form > button').click();
+        cy.get('input[name="skill_name"]').clear();
+        cy.get('.edit-skills-container > form > button').should('be.visible').click();
 
-        cy.wait(1000);  
-        
         cy.contains('Skill não pode ser vazia').should('be.visible');
 
-        cy.get('form > [type="text"]').clear().type(newSkill);
-        cy.get('form > button').click();
-
-        cy.wait(1000);  
+        cy.get('input[name="skill_name"]').clear().type(newSkill);
+        cy.get('.edit-skills-container > form > button').should('be.visible').click();
 
         cy.contains('Skill adicionada com sucesso!').should('be.visible');
         
         cy.contains('Voltar para o Editar Perfil').click();
         cy.url().should('include', '/editar-perfil');
-        
+
         cy.contains('Voltar ao Perfil').click();
         cy.url().should('include', '/perfil');
-        
+
         cy.get('.skills-list').should('contain', newSkill);
     });
 });

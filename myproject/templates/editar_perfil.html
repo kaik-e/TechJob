@@ -15,25 +15,24 @@
         
         <form method="POST" enctype="multipart/form-data" class="edit-profile-form">  
             {% csrf_token %}
-            <label for="username">Nome de Usuário:</label>
+            <label for="username">Nome de usuário:</label>
             <input type="text" name="username" id="username" value="{{ user.username }}" required placeholder="Nome de Usuário">
             
             <label for="description">Descrição:</label>
             <textarea name="description" id="description" required placeholder="Descrição">{{ user.description }}</textarea>
             
-            <label for="profile_picture">Trocar Foto de Perfil:</label>
+            <label for="profile_picture">Foto de perfil:</label>
             <input type="file" name="profile_picture" id="profile_picture">
 
-            <button type="submit" class="edit-profile-btn">Salvar Alterações</button>
+            <button type="submit" class="edit-profile-btn">Salvar perfil</button>
         </form>
         
         <div class="action-buttons">
-            <a href="{% url 'editar_skills' %}" class="btn">Editar Skills</a>
-            <a href="{% url 'adicionar_portfolio' %}" class="btn">Adicionar Portfólio</a>
+            <a href="{% url 'editar_skills' %}" class="btn">Editar skills</a>
+            <a href="{% url 'adicionar_portfolio' %}" class="btn">Adicionar portfólio</a>
         </div>
         
-
-        <a href="{% url 'perfil' user.id %}" class="back-btn btn">Voltar ao Perfil</a>
+        <a href="{% url 'perfil' user.id %}" class="back-btn btn">Voltar para o perfil</a>
     </div>
 </body>
 </html>

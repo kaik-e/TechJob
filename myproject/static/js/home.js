@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('JavaScript carregado');
-
-    function handleSearchInput() {
+    document.getElementById('home-search-input').addEventListener('input', function() {
         let query = this.value;
         if (query.length > 0) {
             fetch(`/buscar/?q=${encodeURIComponent(query)}`)
@@ -30,45 +28,24 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('home-search-results').innerHTML = '';
             document.getElementById('home-search-results').style.display = 'none';
         }
-    }
+    });
+});
 
-    document.getElementById('home-search-input').addEventListener('input', handleSearchInput);
+const header = document.querySelector('.header');
+let lastScrollTop = 0;
 
-    function handleFilterButtonClick(event) {
-        event.stopPropagation();
-        document.getElementById('filter-dropdown').classList.toggle('hidden');
-    }
+window.addEventListener('scroll', function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-    document.getElementById('filter-button').addEventListener('click', handleFilterButtonClick);
-
-    function handleDocumentClick(event) {
-        let filterDropdown = document.getElementById('filter-dropdown');
-        let filterButton = document.getElementById('filter-button');
-        if (!filterDropdown.contains(event.target) && !filterButton.contains(event.target)) {
-            filterDropdown.classList.add('hidden');
+    if (currentScroll > lastScrollTop) {
+        // Quando rolar para baixo, esconda o cabeçalho
+        header.classList.add('hidden');
+    } else {
+        // Quando rolar para cima e chegar ao topo, mostre o cabeçalho
+        if (currentScroll === 0) {
+            header.classList.remove('hidden');
         }
     }
 
-    document.addEventListener('click', handleDocumentClick);
-
-    function handleFilterItemClick() {
-        let filter = this.getAttribute('data-filter');
-        document.querySelectorAll('.projeto-item').forEach(function(projeto) {
-            if (filter === 'all' || projeto.getAttribute('data-category') === filter) {
-                projeto.style.display = 'block';
-            } else {
-                projeto.style.display = 'none';
-            }
-        });
-
-        let url = new URL(window.location.href);
-        url.searchParams.set('filtro', filter);
-        window.history.pushState({}, '', url.href);
-
-        document.getElementById('filter-dropdown').classList.add('hidden');
-    }
-
-    document.querySelectorAll('#filter-dropdown .filter-item').forEach(function(option) {
-        option.addEventListener('click', handleFilterItemClick);
-    });
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para evitar valores negativos
 });

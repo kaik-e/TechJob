@@ -19,24 +19,25 @@
             </div>
         {% endfor %}
 
-        <form method="POST">
+        <form method="POST" class="edit-skills-form">
             {% csrf_token %}
-            <input type="text" name="skill_name" placeholder="Adicione uma nova skill">
-            <button type="submit">Adicionar Skill</button>
-        </form>        
+            <label for="skill_name" class="skill-label">Adicionar uma nova skill:</label>
+            <input type="text" name="skill_name" id="skill_name" class="new-skill-input" placeholder="Adicione sua skill">
+            <button type="submit" class="edit-skills-btn">Salvar skill</button>
+        </form>
+        
+               
 
-        <h3>Suas Skills</h3>
+        <h3>Suas skills</h3>
         <ul>
             {% for skill in habilidades_usuario %}
                 <li>{{ skill.name }}</li>
             {% empty %}
-                <li>Você ainda não possui skills.</li>
+                <li>Você ainda não possui skills</li>
             {% endfor %}
         </ul>
 
-        <button class="back-btn">
-            <a href="{% url 'editar_perfil' %}" style="color: #ffffff; text-decoration: none;">Voltar para o Editar Perfil</a>
-        </button>        
+        <a href="{% url 'editar_perfil' %}" class="back-btn btn">Voltar para o editar perfil</a>
     </div>
 </body>
 </html>

@@ -69,3 +69,18 @@ body {
     margin-top: 20px;
   }
   
+  .back-btn {
+    color: rgb(66, 180, 75);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.12s ease;
+}
+
+.back-btn:hover {
+    color: rgb(55, 155, 65);
+}
+
+.back-btn:active {
+    opacity: 0.6;
+}
+
