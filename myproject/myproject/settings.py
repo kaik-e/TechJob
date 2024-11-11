@@ -39,11 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'tailwind',
-    'accounts',
-    
-    'django.contrib.sites',  
 ]
 
 MEDIA_URL = '/media/'
