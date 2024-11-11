@@ -79,16 +79,15 @@ Screecast Do Figma:
 
 Screecast Dos Testes E2E:
 
-### Deploy:
+### Deploy
 
 Screcast Do Deploy:
 
-### Contribuiting:
+### Como Contribuir
 
-https://github.com/kaik-e/TechJob/blob/main/CONTRIBUTING.md
+Ficamos felizes que você tenha interesse em contribuir para o projeto! Para começar, consulte o arquivo [CONTRIBUTING.md](CONTRIBUTING.md), onde você encontrará informações detalhadas sobre como configurar o ambiente, como reportar problemas, sugerir melhorias e enviar suas contribuições.
 
-https://github.com/kaik-e/TechJob/blob/main/CODE_OF_CONDUCT.md
-
+Também pedimos que leia nosso [Código de Conduta](https://github.com/kaik-e/TechJob/blob/main/CODE_OF_CONDUCT.md) para garantir um ambiente de colaboração respeitoso e inclusivo para todos os participantes.
 
 ## Desenvolvido por:
 
