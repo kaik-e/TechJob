@@ -71,6 +71,8 @@ py manage.py runserver
 
 ### Jira:
 
+![Sprint](img/sprint2.png)
+
 ### Atualização Do Figma:
 
 Screecast Do Figma:
