@@ -73,7 +73,9 @@ py manage.py runserver
 
 ![Sprint](img/sprint2.png)
 
-### Atualização Do Figma:
+### Atualização Do Figma
+
+Link: https://www.figma.com/design/wy3al55ytbCJGAoTPjeKyI/?node-id=0-1&node-type=canvas
 
 Screecast Do Figma:
 
