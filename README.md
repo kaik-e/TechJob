@@ -17,6 +17,7 @@ Para executar este projeto, você precisará das seguintes ferramentas e versõe
 
 ## Como usar localmente 🖥
 ```
+troque o \techjob\myproject\settings.py para o conteudo do arquivo "backupsettings.txt"
 cd .\myproject\
 py -m venv venv
 .\venv\Scripts\activate.bat
