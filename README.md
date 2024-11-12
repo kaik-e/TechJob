@@ -79,7 +79,7 @@ Link: https://cesar-team-cl0vsbag.atlassian.net/jira/software/projects/TEC/board
 
 Link: https://www.figma.com/design/wy3al55ytbCJGAoTPjeKyI/?node-id=0-1&node-type=canvas
 
-Screecast Do Figma:
+Screecast Do Figma: https://youtu.be/u415XQclnqA
 
 ### Testes E2E:
 
