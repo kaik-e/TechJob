@@ -11,10 +11,17 @@ Todos os tipos de contribuição são encorajados e valorizados. Consulte a [Tab
 > - Referencie este projeto no README do seu projeto
 > - Mencione o projeto em meetups locais e conte aos seus amigos/colegas
 
-Criando sua conta no Github
+## Criando sua conta no Github
+
 O primeiro passo é criar uma conta no GitHub seguindo as instruções abaixo:
 
-Guia de Criação de Conta no Github
+<ul>
+  <li>
+    <a  href="https://docs.github.com/pt/get-started/start-your-journey/creating-an-account-on-github"
+      >Guia de Criação de Conta no Github</a>
+  </li>
+</ul>
+
 <!-- omit in toc -->
 ## Tabela de Conteúdos
 
