@@ -37,7 +37,7 @@
     width: 100%; /* Ocupa 100% da largura do container */
     max-width: 400px; /* Limita a largura máxima */
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 0.5rem;
     border: none;
     font-size: 16px;
     box-sizing: border-box;
@@ -50,8 +50,9 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: #1a202c;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 100;
     display: none;
@@ -64,13 +65,20 @@
 }
 
 #search-results li {
+    z-index: 1020;
+    position: relative;
     padding: 10px;
     cursor: pointer;
     font-size: 14px;
 }
 
 #search-results li:hover {
-    background-color: #f0f0f0;
+    background-color: #151923;
+}
+
+#search-results ul {
+        z-index: 1020;
+        position: absolute;
 }
 
 /* Ícone de perfil */
