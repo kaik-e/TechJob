@@ -33,6 +33,7 @@ Abra o terminal do Git Bash
       git clone https://github.com/kaik-e/TechJob.git
 
 </html>
+
 ## Após acessar no código
 
 - Criando um ambiente virtual:
