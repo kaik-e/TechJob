@@ -22,6 +22,26 @@ O primeiro passo é criar uma conta no GitHub seguindo as instruções abaixo:
   </li>
 </ul>
 
+## Clone do Repositório
+
+Abra o terminal do Git Bash
+
+- Navegue até o diretório onde você deseja clonar o repositório, utilizando o comando:
+
+<html lang="pt">
+
+      cd /c/Users/SeuUsuario/SeuDiretorio
+
+</html>
+
+- Clone o repositório para o diretório navegado, utilizando o comando:
+
+<html lang="pt">
+
+      git clone https://github.com/kaik-e/TechJob.git
+
+</html>
+
 <!-- omit in toc -->
 ## Tabela de Conteúdos
 
