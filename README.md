@@ -68,8 +68,9 @@ py manage.py runserver
 
 ### Entrega 4
 
-
 ### Jira:
+
+Link: https://cesar-team-cl0vsbag.atlassian.net/jira/software/projects/TEC/boards/1/backlog
 
 ![Sprint](img/sprint2.png)
 
