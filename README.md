@@ -16,6 +16,7 @@ Para executar este projeto, você precisará das seguintes ferramentas e versõe
 - **Jira**: Para gerenciamento de projetos e tarefas. [Jira](https://www.atlassian.com/software/jira)
 
 ## Como usar localmente 🖥
+
 ```
 cd .\myproject\
 py -m venv venv
@@ -25,6 +26,7 @@ py manage.py runserver
 ```
 
 ## Links 🔗
+
 - https://cesar-team-cl0vsbag.atlassian.net/jira/software/projects/TEC/boards/1/backlog?assignee=unassigned
 - https://www.figma.com/design/wy3al55ytbCJGAoTPjeKyI/Untitled?node-id=0-1&node-type=canvas&t=1Z0sYzX13y6Dh0xm-0
 - https://youtu.be/qymdWopGE-o (Screencast) Entrega 1
@@ -41,6 +43,7 @@ py manage.py runserver
 **Protótipos Lo-Fi**
 
 #### Tela de Login
+
 ![Login](img/login.png)
 
 #### Front Page
@@ -59,7 +62,6 @@ py manage.py runserver
 
 ![Chat](img/chat.png)
 
-
 ### Entrega 3
 
 ### Sprint 1
@@ -68,24 +70,47 @@ py manage.py runserver
 
 ### Entrega 4
 
-
 ### Jira:
 
-### Atualização Do Figma:
+Link: https://cesar-team-cl0vsbag.atlassian.net/jira/software/projects/TEC/boards/1/backlog
+
+![Sprint](img/sprint2.png)
+
+### Atualização Do Figma
+
+Link: https://www.figma.com/design/wy3al55ytbCJGAoTPjeKyI/?node-id=0-1&node-type=canvas
 
 Screecast Do Figma:
 
 ### Testes E2E:
 
-1- Teste De Adicionar e Visualizar Avaliação: https://youtu.be/ypM9ooOl2iM
+1 - Teste De Adicionar e Visualizar Avaliação: https://youtu.be/Gs7eqcr_XuI
 
-2- Teste De Adicionar e Visualizar Portifolio: https://youtu.be/6_EAOXhrMgU
+2 - Teste De Adicionar e Visualizar Portifolio: https://youtu.be/NLVRLT_sPvI
+
+3 - Teste De Adicionar e Visualizar Skill: https://youtu.be/el-oEjd2ZNk
+
+4 - Teste De Adicionar Projeto: https://youtu.be/m_4t64VcFBI
+
+5 - Teste De Editar Perfil: https://youtu.be/tRZx5xU_OuU
+
+6 - Teste Da Navbar: https://youtu.be/agnd_76KYSM
+
+7 - Teste De Visualizar Perfis: https://youtu.be/82ATS_YTXjQ
+
+8 - Teste De Visualizar Projeto: https://youtu.be/w5KgUnFIWPU
 
 ### Deploy
 
 Screcast Do Deploy:
 
+Link: https://techjob-febqexf3hpfxgkfc.brazilsouth-01.azurewebsites.net/
+
 ### Issue
+
+Em Aberto:
+
+![image](https://github.com/user-attachments/assets/0d1085b9-614f-470d-b239-a23c6a2b4dc5)
 
 Erro 1:
 
@@ -111,7 +136,6 @@ Erro 6:
 
 ![image](https://github.com/user-attachments/assets/a199da78-8dc0-4b07-8e42-0b53859eebc7)
 
-
 ### Como Contribuir
 
 Ficamos felizes que você tenha interesse em contribuir para o projeto! Para começar, consulte o arquivo [CONTRIBUTING.md](CONTRIBUTING.md), onde você encontrará informações detalhadas sobre como configurar o ambiente, como reportar problemas, sugerir melhorias e enviar suas contribuições.
@@ -123,6 +147,4 @@ Também pedimos que leia nosso [Código de Conduta](https://github.com/kaik-e/Te
 - [Caio Augusto](https://github.com/CaioAugustoMachadoDeMelo) - camm@cesar.school
 - [Davi Santiago](https://github.com/Davicas01) - dscpr@cesar.school
 - [Felipe Gonçalves Moxotó](https://github.com/Moxoto2k) - fgm@cesar.school
-- [Kaike Campos](https://github.com/Kaik-e) - kcma@cesar.school 
-
-
+- [Kaike Campos](https://github.com/Kaik-e) - kcma@cesar.school

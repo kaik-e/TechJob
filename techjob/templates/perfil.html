@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/perfil/perfil.css' %}">
     <title>Perfil</title>
 </head>
@@ -57,7 +58,7 @@
                             {% if avaliacao.author.profile_picture %}
                                 <img src="{{ avaliacao.author.profile_picture.url }}" alt="Foto de perfil do autor" class="profile-img" />
                             {% else %}
-                                <img src="{% static 'default_profile.png' %}" alt="Foto de perfil padrão" class="profile-img" />
+                                <img src="{% static 'img\default_pfp.png' %}" alt="Foto de perfil padrão" class="profile-img" />
                             {% endif %}
                             <div class="author-details">
                                 <span class="author-name"><strong>{{ avaliacao.author.username }}</strong></span>
