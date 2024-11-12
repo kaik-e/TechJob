@@ -34,14 +34,6 @@ Abra o terminal do Git Bash
 
 </html>
 ## Após acessar no código
-- Habilitando execução de scripts no PowerShell do Windows:
-
-
-<html lang="pt">
-
-      Set-ExecutionPolicy -Scope CurrentUser Unrestricted
-
-</html>
 
 - Criando um ambiente virtual:
 
