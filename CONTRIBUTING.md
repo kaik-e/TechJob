@@ -36,30 +36,6 @@ Abra o terminal do Git Bash
 
 ## Após acessar no código
 
-- Instalando Python:
-
-<html lang="pt">
-
-      pip install python
-
-</html>
-
-- Atualizar o Python:
-
-<html lang="pt">
-
-      pip install --upgrade pip
-
-</html>
-
-- Atualizar o Python:
-
-<html lang="pt">
-
-      cd .\TechJob\
-
-</html>
-
 - Criando um ambiente virtual:
 
 <html lang="pt">
