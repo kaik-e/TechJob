@@ -41,6 +41,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
+          cd techjob/
           zip release.zip ./* -r
           cd ..
           mv techjob/release.zip .
