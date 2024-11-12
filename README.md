@@ -106,6 +106,10 @@ Link: https://techjob-febqexf3hpfxgkfc.brazilsouth-01.azurewebsites.net/
 
 ### Issue
 
+Em Aberto:
+
+![image](https://github.com/user-attachments/assets/0d1085b9-614f-470d-b239-a23c6a2b4dc5)
+
 Erro 1:
 
 ![image](https://github.com/user-attachments/assets/9196cff5-11e6-4a54-b92a-cc722c09a20b)
