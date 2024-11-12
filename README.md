@@ -79,13 +79,27 @@ Screecast Do Figma:
 
 ### Testes E2E:
 
-1- Teste De Adicionar e Visualizar Avaliação: https://youtu.be/ypM9ooOl2iM
+1 - Teste De Adicionar e Visualizar Avaliação: https://youtu.be/Gs7eqcr_XuI
 
-2- Teste De Adicionar e Visualizar Portifolio: https://youtu.be/6_EAOXhrMgU
+2 - Teste De Adicionar e Visualizar Portifolio: https://youtu.be/NLVRLT_sPvI
+
+3 - Teste De Adicionar e Visualizar Skill: https://youtu.be/el-oEjd2ZNk
+
+4 - Teste De Adicionar Projeto: https://youtu.be/m_4t64VcFBI
+
+5 - Teste De Editar Perfil: https://youtu.be/tRZx5xU_OuU
+
+6 - Teste Da Navbar: https://youtu.be/agnd_76KYSM
+
+7 - Teste De Visualizar Perfis: https://youtu.be/82ATS_YTXjQ
+
+8 - Teste De Visualizar Projeto: https://youtu.be/w5KgUnFIWPU
 
 ### Deploy
 
 Screcast Do Deploy:
+
+Link: https://techjob-febqexf3hpfxgkfc.brazilsouth-01.azurewebsites.net/
 
 ### Issue
 
