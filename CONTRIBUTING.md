@@ -41,7 +41,116 @@ Abra o terminal do Git Bash
       git clone https://github.com/kaik-e/TechJob.git
 
 </html>
+## Após acessar no código
+- Habilitando execução de scripts no PowerShell do Windows:
 
+
+<html lang="pt">
+
+      Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+
+</html>
+
+- Criando um ambiente virtual:
+
+
+<html lang="pt">
+
+      py -m venv venv
+
+</html>
+
+- Ativando o ambiente virtual:
+
+
+<html lang="pt">
+
+      venv\Scripts\activate.bat
+
+</html>
+
+- Instalar o conteúdo do requirements.txt:
+
+
+<html lang="pt">
+
+      pip install -r requirements.txt
+
+</html>
+
+- Criação de arquivos de migração baseados nas mudanças já existentes:
+
+
+<html lang="pt">
+
+      python manage.py makemigrations appsmartschool
+
+</html>
+
+- Aplicação das migrações ao seu banco de dados:
+
+
+<html lang="pt">
+
+      python manage.py migrate
+
+</html>
+
+Por fim, quando necessário, realize os comandos a seguir:
+
+- Para executar o site na URL http://127.0.0.1:8000/, use o comando:
+
+
+<html lang="pt">
+
+      python manage.py runserver
+
+</html>
+
+- Verificando o status do repositório:
+
+
+<html lang="pt">
+
+      git status
+
+</html>
+
+- Adicionando arquivos modificados:
+
+
+<html lang="pt">
+
+      git add .
+
+</html>
+
+- Fazendo o commit das mudanças:
+
+
+<html lang="pt">
+
+      git commit -m “seu comentário”
+
+</html>
+
+- Enviando as mudanças para o repositório remoto:
+
+
+<html lang="pt">
+
+      git push
+
+</html>
+
+- Recebendo atualizações do código:
+
+
+<html lang="pt">
+
+      git pull
+
+</html>
 <!-- omit in toc -->
 ## Tabela de Conteúdos
 
