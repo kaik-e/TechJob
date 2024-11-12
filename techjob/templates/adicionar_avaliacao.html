@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/perfil/adicionar_avaliacao.css' %}">
+    <title>Editar Avaliações</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="edit-skills-container">
+        <h2>Adicionar Avaliação</h2>
+        <div class="messages" id="message-container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+
+        <form id="avaliacao-form" method="POST">
+            {% csrf_token %}
+            <textarea name="comment" placeholder="Escreva sua avaliação..." required></textarea>
+            <span id="error-message" style="color: red; display: none;">Por favor, digite uma avaliação.</span>
+            <button type="submit">Adicionar Avaliação</button>
+        </form>
+
+        <a href="{% url 'perfil' recipient.id %}" class="back-btn" style="text-decoration: none;">
+            <span class="back-link">Voltar para o Perfil</span>
+        </a>        
+    </div>
+    <script src="{% static 'js/adicionar_avaliacao.js' %}"></script>
+</body>
+</html>

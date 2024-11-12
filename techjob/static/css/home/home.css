@@ -1,0 +1,265 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #1a202c;
+    color: #cbd5e0;
+}
+
+.projetos-container {
+    background-color: #1a202c;
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a202c;
+    position: unset;
+    top: 0;
+    padding: 1rem 0;
+    z-index: 1;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #2d3748;
+    border-radius: 0.5rem;
+    margin-left: 1%;
+    padding: 0.5rem;
+    position: initial;
+}
+
+#home-search-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #2f855a;
+    padding-left: 1rem;
+<<<<<<< HEAD:myproject/static/css/home/home.css
+    width: 0% ;
+=======
+    width: 0%;
+>>>>>>> 713e44acd655b35b5fe4312b291d607a583f89bd:techjob/static/css/home/home.css
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #38a169;
+}
+
+.search-results {
+    background-color: #2d3748;
+    color: #ffffff;
+    border-radius: 0.375rem;
+    position: absolute;
+    top: 2.5rem;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+
+.filter-container {
+    position: relative;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.filter-button {
+    background-color: #1a202c;
+    border: 1px solid #4a5568;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 40%;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #38a169;
+}
+
+.filter-text {
+    color: #ffffff;
+}
+
+.filter-dropdown {
+    background-color: #2d3748;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    position: absolute;
+    margin-top: 0.25rem;
+    width: 10rem;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-item {
+    display: block;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-item:hover {
+    background-color: #38a169;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-project-button {
+    background-color: #41B44A;
+    border: 1px solid #48bb78;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-project-button:hover {
+    background-color: #2f855a;
+}
+
+.add-project-text {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.875rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-gap: 1.5rem;
+    padding-top: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.project-item {
+    background-color: #2d3748;
+    border-radius: 1.25rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.project-item:hover {
+    cursor: default;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+    height: 11rem;
+    background-color: #4a5568;
+    border-radius: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.project-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #cbd5e0;
+}
+
+.author-picture {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    overflow: hidden;
+    border: 2px solid #4a5568;
+    margin-right: 0.75rem;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.author-name:hover {
+    color: #38a169;
+}
+
+.view-more {
+    display: flex;
+    border-radius: 0.5rem;
+    padding: 5%;
+<<<<<<< HEAD:myproject/static/css/home/home.css
+    background-color: #38a169;
+=======
+    background-color: #41B44A;
+>>>>>>> 713e44acd655b35b5fe4312b291d607a583f89bd:techjob/static/css/home/home.css
+    justify-content: center;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.view-more:hover {
+    background-color: #2f855a;
+}
+
+.view-more-link {
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.view-more-link:hover {
+    color: white;
+<<<<<<< HEAD:myproject/static/css/home/home.css
+    font-weight: 600;
+=======
+>>>>>>> 713e44acd655b35b5fe4312b291d607a583f89bd:techjob/static/css/home/home.css
+    transition: 300ms ease-in-out;
+}

@@ -68,16 +68,78 @@ py manage.py runserver
 
 ### Entrega 4
 
-### Sprint 1(Sprint 2 Total)
+### Jira:
 
-![image](https://github.com/user-attachments/assets/031bac23-a64a-40cf-83e7-a79d7c087890)
+Link: https://cesar-team-cl0vsbag.atlassian.net/jira/software/projects/TEC/boards/1/backlog
 
-![image](https://github.com/user-attachments/assets/20b3d039-04d0-41d4-b80a-fd3957befefe)
+![Sprint](img/sprint2.png)
 
-![image](https://github.com/user-attachments/assets/042e5402-9bd7-4458-bc39-67c699b570c0)
+### Atualização Do Figma
 
-![image](https://github.com/user-attachments/assets/8caaac13-06e7-4dc1-ae3a-9bb8719d3f3a)
+Link: https://www.figma.com/design/wy3al55ytbCJGAoTPjeKyI/?node-id=0-1&node-type=canvas
 
+Screecast Do Figma:
+
+### Testes E2E:
+
+1 - Teste De Adicionar e Visualizar Avaliação: https://youtu.be/Gs7eqcr_XuI
+
+2 - Teste De Adicionar e Visualizar Portifolio: https://youtu.be/NLVRLT_sPvI
+
+3 - Teste De Adicionar e Visualizar Skill: https://youtu.be/el-oEjd2ZNk
+
+4 - Teste De Adicionar Projeto: https://youtu.be/m_4t64VcFBI
+
+5 - Teste De Editar Perfil: https://youtu.be/tRZx5xU_OuU
+
+6 - Teste Da Navbar: https://youtu.be/agnd_76KYSM
+
+7 - Teste De Visualizar Perfis: https://youtu.be/82ATS_YTXjQ
+
+8 - Teste De Visualizar Projeto: https://youtu.be/w5KgUnFIWPU
+
+### Deploy
+
+Screcast Do Deploy:
+
+Link: https://techjob-febqexf3hpfxgkfc.brazilsouth-01.azurewebsites.net/
+
+### Issue
+
+Em Aberto:
+
+![image](https://github.com/user-attachments/assets/0d1085b9-614f-470d-b239-a23c6a2b4dc5)
+
+Erro 1:
+
+![image](https://github.com/user-attachments/assets/9196cff5-11e6-4a54-b92a-cc722c09a20b)
+
+Erro 2:
+
+![image](https://github.com/user-attachments/assets/c61fe7f7-1977-49a4-b41a-eb1793dd7259)
+
+Erro 3:
+
+![image](https://github.com/user-attachments/assets/6f77998b-a511-433e-b657-93eaee04433e)
+
+Erro 4:
+
+![image](https://github.com/user-attachments/assets/5e258130-73d9-406e-b8c6-0cbed0276c28)
+
+Erro 5:
+
+![image](https://github.com/user-attachments/assets/9deb26b6-bca6-4931-932a-0981776a4c66)
+
+Erro 6:
+
+![image](https://github.com/user-attachments/assets/a199da78-8dc0-4b07-8e42-0b53859eebc7)
+
+
+### Como Contribuir
+
+Ficamos felizes que você tenha interesse em contribuir para o projeto! Para começar, consulte o arquivo [CONTRIBUTING.md](CONTRIBUTING.md), onde você encontrará informações detalhadas sobre como configurar o ambiente, como reportar problemas, sugerir melhorias e enviar suas contribuições.
+
+Também pedimos que leia nosso [Código de Conduta](https://github.com/kaik-e/TechJob/blob/main/CODE_OF_CONDUCT.md) para garantir um ambiente de colaboração respeitoso e inclusivo para todos os participantes.
 
 ## Desenvolvido por:
 
