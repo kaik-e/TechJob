@@ -32,7 +32,7 @@ jobs:
 
       - name: Cleaning testing files
         run: |
-          cd techjob/
+          cd ./
           rm db.sqlite3
           rm .env
           cd ..
@@ -41,7 +41,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          cd techjob/
+          cd ./
           zip release.zip ./* -r
           cd ..
           mv techjob/release.zip .
