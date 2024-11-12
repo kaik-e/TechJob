@@ -36,12 +36,35 @@ Abra o terminal do Git Bash
 
 ## Após acessar no código
 
-- Criando um ambiente virtual:
-
+- Instalando Python:
 
 <html lang="pt">
 
-      py -m venv venv
+      pip install python
+
+</html>
+
+- Atualizar o Python:
+
+<html lang="pt">
+
+      pip install --upgrade pip
+
+</html>
+
+- Atualizar o Python:
+
+<html lang="pt">
+
+      cd .\TechJob\
+
+</html>
+
+- Criando um ambiente virtual:
+
+<html lang="pt">
+
+      python -m venv venv
 
 </html>
 
