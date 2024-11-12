@@ -100,7 +100,7 @@ Screecast Do Figma:
 
 ### Deploy
 
-Screcast Do Deploy:
+Screcast Do Deploy: https://youtu.be/6ij2OiOMmXI
 
 Link: https://techjob-febqexf3hpfxgkfc.brazilsouth-01.azurewebsites.net/
 
