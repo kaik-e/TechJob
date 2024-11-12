@@ -68,7 +68,7 @@ Abra o terminal do Git Bash
 
 <html lang="pt">
 
-      python manage.py makemigrations appsmartschool
+      python manage.py makemigrations
 
 </html>
 
