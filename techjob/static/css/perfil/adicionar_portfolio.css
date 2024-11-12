@@ -96,24 +96,24 @@ body {
     display: inline-block;
     padding: 12px 20px;
     text-align: center;
-    background: none; /* Sem fundo */
-    border: none; /* Sem borda */
+    background: none; 
+    border: none; 
     transition: transform 0.2s;
 }
 
 .back-btn .back-link {
-    color: rgb(66, 180, 75); /* Texto verde */
+    color: rgb(66, 180, 75); 
     text-decoration: none;
-    font-weight: bold; /* Texto em negrito */
-    font-size: 18px; /* Tamanho do texto aumentado */
+    font-weight: bold; 
+    font-size: 18px; 
 }
 
 .back-btn .back-link:hover {
-    transform: scale(1.05); /* Efeito de aumento no hover */
+    transform: scale(1.05); 
 }
 
 .back-btn .back-link:active {
-    opacity: 0.6; /* Efeito de clique */
+    opacity: 0.6; 
 }
 
 
